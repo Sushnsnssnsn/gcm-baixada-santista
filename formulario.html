@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário do Concurso - GCM Baixada Santista</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #0b1220; color: #f5f5f5; line-height: 1.7; }
+    header { background: linear-gradient(135deg, #07111f, #0f2d4a); padding: 60px 20px; text-align: center; border-bottom: 4px solid #d4af37; }
+    header h1 { color: #d4af37; font-size: 2.2rem; text-transform: uppercase; margin-bottom: 10px; }
+    header p { color: #dbeafe; font-size: 1.1rem; }
+    nav { background: #09111f; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 10; }
+    nav a { color: white; text-decoration: none; font-weight: bold; margin: 0 10px; }
+    nav a:hover { color: #d4af37; }
+    main { max-width: 1000px; margin: auto; padding: 45px 20px; }
+    section, .question { background: #111c2f; border: 1px solid #223653; border-radius: 12px; padding: 25px; margin-bottom: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+    h2 { color: #d4af37; margin-bottom: 12px; border-left: 5px solid #d4af37; padding-left: 12px; }
+    h3 { color: #d4af37; margin-bottom: 12px; }
+    label { display: block; margin: 8px 0; cursor: pointer; }
+    input[type="text"], input[type="number"], textarea { width: 100%; padding: 12px; margin: 8px 0 15px; border: none; border-radius: 8px; background: #e8eef7; color: #111; font-size: 1rem; }
+    textarea { min-height: 90px; resize: vertical; }
+    input[type="radio"] { margin-right: 8px; }
+    button { background: #d4af37; color: #111; border: none; padding: 14px 22px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+    button:hover { filter: brightness(1.1); }
+    .aviso { background: #2f2411; border: 1px solid #d4af37; color: #ffe9a6; padding: 18px; border-radius: 10px; margin-bottom: 22px; }
+    #resultado { display: none; padding: 22px; border-radius: 12px; margin-top: 25px; background: #0f2d4a; border: 1px solid #d4af37; }
+    .aprovado { color: #8cffb3; font-weight: bold; font-size: 1.2rem; }
+    .reprovado { color: #ff9b9b; font-weight: bold; font-size: 1.2rem; }
+    footer { text-align: center; background: #07111f; color: #aebed0; padding: 25px; border-top: 2px solid #d4af37; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Formulário do Concurso</h1>
+  <p>Guarda Civil Metropolitana - Baixada Santista</p>
+</header>
+
+<nav>
+  <a href="index.html">Início</a>
+  <a href="formulario.html">Formulário</a>
+  <a href="termos.html">Termos de Uso</a>
+  <a href="privacidade.html">Privacidade</a>
+</nav>
+
+<main>
+  <div class="aviso">
+    Para ser aprovado no concurso, o candidato precisa acertar no mínimo <strong>8 de 10 perguntas</strong>.
+  </div>
+
+  <section>
+    <h2>Dados do Candidato</h2>
+    <label>Nome completo</label>
+    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+
+    <label>ID ou nome no Discord</label>
+    <input type="text" id="discord" placeholder="Ex: Juan#0000 ou @usuario" required>
+
+    <label>Idade</label>
+    <input type="number" id="idade" placeholder="Digite sua idade" required>
+
+    <label>Por que você quer entrar na GCM?</label>
+    <textarea id="motivo" placeholder="Explique seu interesse em entrar na GCM"></textarea>
+  </section>
+
+  <form id="prova">
+    <h2>Prova Objetiva - Nível Médio</h2>
+
+    <div class="question">
+      <h3>1. Qual é a principal função da GCM?</h3>
+      <label><input type="radio" name="q1" value="a"> Atuar de forma preventiva na segurança urbana</label>
+      <label><input type="radio" name="q1" value="b"> Criar leis municipais</label>
+      <label><input type="radio" name="q1" value="c"> Substituir o Poder Judiciário</label>
+    </div>
+
+    <div class="question">
+      <h3>2. O que significa hierarquia dentro da corporação?</h3>
+      <label><input type="radio" name="q2" value="a"> Organização por cargos, funções e responsabilidades</label>
+      <label><input type="radio" name="q2" value="b"> Todos fazem o que quiserem</label>
+      <label><input type="radio" name="q2" value="c"> Ausência de comando</label>
+    </div>
+
+    <div class="question">
+      <h3>3. Durante uma abordagem, o agente deve agir com:</h3>
+      <label><input type="radio" name="q3" value="a"> Calma, técnica e respeito</label>
+      <label><input type="radio" name="q3" value="b"> Agressividade sem necessidade</label>
+      <label><input type="radio" name="q3" value="c"> Deboche e provocação</label>
+    </div>
+
+    <div class="question">
+      <h3>4. Um relatório de ocorrência deve conter:</h3>
+      <label><input type="radio" name="q4" value="a"> Dados claros, local, horário, envolvidos e descrição dos fatos</label>
+      <label><input type="radio" name="q4" value="b"> Apenas opinião pessoal</label>
+      <label><input type="radio" name="q4" value="c"> Informações inventadas</label>
+    </div>
+
+    <div class="question">
+      <h3>5. O respeito à população é importante porque:</h3>
+      <label><input type="radio" name="q5" value="a"> Fortalece a confiança entre guarda e cidadão</label>
+      <label><input type="radio" name="q5" value="b"> Diminui a responsabilidade do agente</label>
+      <label><input type="radio" name="q5" value="c"> Permite abuso de autoridade</label>
+    </div>
+
+    <div class="question">
+      <h3>6. O uso adequado dos canais da GCM significa:</h3>
+      <label><input type="radio" name="q6" value="a"> Usar cada canal para sua finalidade correta</label>
+      <label><input type="radio" name="q6" value="b"> Fazer spam em todos os canais</label>
+      <label><input type="radio" name="q6" value="c"> Mandar mensagens fora do tema sempre que quiser</label>
+    </div>
+
+    <div class="question">
+      <h3>7. Em caso de dúvida durante o serviço, o agente deve:</h3>
+      <label><input type="radio" name="q7" value="a"> Procurar orientação de um superior</label>
+      <label><input type="radio" name="q7" value="b"> Ignorar a situação</label>
+      <label><input type="radio" name="q7" value="c"> Criar uma regra própria</label>
+    </div>
+
+    <div class="question">
+      <h3>8. Disciplina dentro da GCM significa:</h3>
+      <label><input type="radio" name="q8" value="a"> Cumprir regras, ordens legais e procedimentos</label>
+      <label><input type="radio" name="q8" value="b"> Desrespeitar superiores</label>
+      <label><input type="radio" name="q8" value="c"> Agir sem responsabilidade</label>
+    </div>
+
+    <div class="question">
+      <h3>9. Se um membro descumprir as regras, ele pode receber:</h3>
+      <label><input type="radio" name="q9" value="a"> Medida disciplinar conforme a gravidade</label>
+      <label><input type="radio" name="q9" value="b"> Promoção automática</label>
+      <label><input type="radio" name="q9" value="c"> Isenção de todas as regras</label>
+    </div>
+
+    <div class="question">
+      <h3>10. Qual atitude representa profissionalismo?</h3>
+      <label><input type="radio" name="q10" value="a"> Respeitar regras, colegas, superiores e cidadãos</label>
+      <label><input type="radio" name="q10" value="b"> Ofender candidatos e membros</label>
+      <label><input type="radio" name="q10" value="c"> Divulgar informações internas sem autorização</label>
+    </div>
+
+    <button type="submit">Finalizar Formulário</button>
+  </form>
+
+  <div id="resultado"></div>
+</main>
+
+<footer>
+  <p>© 2026 GCM Baixada Santista</p>
+  <p>Formulário de Concurso</p>
+</footer>
+
+<script>
+  document.getElementById("prova").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const discord = document.getElementById("discord").value.trim();
+    const idade = document.getElementById("idade").value.trim();
+
+    if (!nome || !discord || !idade) {
+      alert("Preencha nome, Discord e idade antes de finalizar.");
+      return;
+    }
+
+    const respostas = {
+      q1: "a", q2: "a", q3: "a", q4: "a", q5: "a",
+      q6: "a", q7: "a", q8: "a", q9: "a", q10: "a"
+    };
+
+    let pontos = 0;
+    let naoRespondidas = 0;
+
+    for (let pergunta in respostas) {
+      const marcada = document.querySelector('input[name="' + pergunta + '"]:checked');
+      if (!marcada) {
+        naoRespondidas++;
+      } else if (marcada.value === respostas[pergunta]) {
+        pontos++;
+      }
+    }
+
+    if (naoRespondidas > 0) {
+      alert("Responda todas as 10 perguntas antes de finalizar.");
+      return;
+    }
+
+    const porcentagem = Math.round((pontos / 10) * 100);
+    const aprovado = pontos >= 8;
+    const chance = aprovado
+      ? "Alta chance de aprovação no processo seletivo."
+      : pontos >= 6
+        ? "Chance média. Estude mais para aumentar sua nota."
+        : "Chance baixa. Recomendado revisar as regras e tentar novamente.";
+
+    const resultado = document.getElementById("resultado");
+    resultado.style.display = "block";
+    resultado.innerHTML = `
+      <h2>Resultado do Concurso</h2>
+      <p><strong>Candidato:</strong> ${nome}</p>
+      <p><strong>Discord:</strong> ${discord}</p>
+      <p><strong>Nota:</strong> ${pontos}/10</p>
+      <p><strong>Porcentagem de acerto:</strong> ${porcentagem}%</p>
+      <p><strong>Chance de acerto/aprovação:</strong> ${chance}</p>
+      <p class="${aprovado ? "aprovado" : "reprovado"}">
+        ${aprovado ? "APROVADO — acertou 8 ou mais perguntas." : "REPROVADO — precisa acertar pelo menos 8 de 10 perguntas."}
+      </p>
+    `;
+
+    resultado.scrollIntoView({ behavior: "smooth" });
+  });
+</script>
+
+</body>
+</html>
