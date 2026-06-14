@@ -206,6 +206,29 @@
     `;
 
     resultado.scrollIntoView({ behavior: "smooth" });
+
+    fetch('http://localhost:3000/formulario', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nome: nome,
+        discord: discord,
+        idade: idade,
+        motivo: document.getElementById("motivo").value.trim(),
+        nota: pontos,
+        status: aprovado ? "APROVADO" : "REPROVADO"
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Enviado para o Discord:", data);
+    })
+    .catch(error => {
+      console.error("Erro ao enviar para o Discord:", error);
+      alert("Resultado calculado, mas não foi possível enviar para o Discord. Verifique se o backend está ligado.");
+    });
   });
 </script>
 
