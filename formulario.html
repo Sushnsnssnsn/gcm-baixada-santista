@@ -46,7 +46,7 @@
 
 <main>
   <div class="aviso">
-    Para ser aprovado no concurso, o candidato precisa acertar no mínimo <strong>8 de 10 perguntas</strong>.
+    Para ser aprovado no concurso, o candidato precisa acertar no mínimo <strong>16 de 20 perguntas</strong>.
   </div>
 
   <section>
@@ -179,7 +179,7 @@
     }
 
     if (naoRespondidas > 0) {
-      alert("Responda todas as 10 perguntas antes de finalizar.");
+      alert("Responda todas as 20 perguntas antes de finalizar.");
       return;
     }
 
@@ -197,11 +197,11 @@
       <h2>Resultado do Concurso</h2>
       <p><strong>Candidato:</strong> ${nome}</p>
       <p><strong>Discord:</strong> ${discord}</p>
-      <p><strong>Nota:</strong> ${pontos}/10</p>
+      <p><strong>Acertos:</strong> ${pontos}/20</p>
       <p><strong>Porcentagem de acerto:</strong> ${porcentagem}%</p>
       <p><strong>Chance de acerto/aprovação:</strong> ${chance}</p>
       <p class="${aprovado ? "aprovado" : "reprovado"}">
-        ${aprovado ? "APROVADO — acertou 8 ou mais perguntas." : "REPROVADO — precisa acertar pelo menos 8 de 10 perguntas."}
+        ${aprovado ? "APROVADO — acertou 16 ou mais perguntas." : "REPROVADO — precisa acertar pelo menos 16 de 20 perguntas."}
       </p>
     `;
 
