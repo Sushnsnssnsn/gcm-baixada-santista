@@ -131,9 +131,11 @@ async function carregarPainel() {
     }
 
     const data = await res.json();
-    const nome = data.user.global_name || data.user.username;
+    const nome=(data.user?.global_name||data.user?.username||'Usuário');
+    const inServer=(data.inServer ?? data.user?.inServer ?? false);
+    const hasRole=(data.hasRole ?? data.user?.hasRole ?? false);
 
-    if (!data.inServer) {
+    if (!inServer) {
       conteudo.innerHTML = `
         <div class="card">
           <h2>Olá, ${nome}</h2>
@@ -146,7 +148,7 @@ async function carregarPainel() {
       return;
     }
 
-    if (!data.hasRole) {
+    if (!hasRole) {
       conteudo.innerHTML = `
         <div class="card">
           <h2>Olá, ${nome}</h2>
