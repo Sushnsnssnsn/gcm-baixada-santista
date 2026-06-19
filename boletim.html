@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boletim de Ocorrência - GCM Baixada Santista</title>
+  <style>
+:root{
+  --bg:#061426;
+  --panel:#0f2743;
+  --panel2:#123255;
+  --sidebar:#07182c;
+  --sidebar2:#0b2a4a;
+  --gold:#d4af37;
+  --gold2:#f3d46b;
+  --text:#f8fbff;
+  --muted:#b8cbe0;
+  --border:#244b70;
+  --blue:#38bdf8;
+  --green:#34d399;
+  --red:#fb7185;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 32%),
+    radial-gradient(circle at bottom right,rgba(212,175,55,.12),transparent 38%),
+    linear-gradient(135deg,#061426,#09213d 48%,#061426);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  pointer-events:none;
+  z-index:-1;
+  animation:gridMove 22s linear infinite;
+}
+
+.app{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:250px 1fr;
+}
+
+.sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  background:linear-gradient(180deg,var(--sidebar),var(--sidebar2));
+  border-right:1px solid rgba(56,189,248,.18);
+  padding:22px 18px;
+  z-index:50;
+  box-shadow:18px 0 48px rgba(0,0,0,.28);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:26px;
+  padding:8px 8px 18px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  min-width:46px;
+  border-radius:15px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  display:grid;
+  place-items:center;
+  color:#061426;
+  font-weight:900;
+}
+
+.brand h1{
+  font-size:.95rem;
+  line-height:1.18;
+  color:#fff;
+  text-transform:uppercase;
+}
+
+.brand span{
+  display:block;
+  color:#bfdbfe;
+  font-size:.76rem;
+  text-transform:none;
+  margin-top:2px;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+  padding:4px;
+}
+
+.menu a{
+  color:#eaf6ff;
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius:14px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  transition:.25s;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.035);
+}
+
+.menu a:hover,.menu a.active{
+  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(212,175,55,.10));
+  border-color:rgba(56,189,248,.35);
+  color:var(--gold2);
+  transform:translateX(6px);
+}
+
+.sidebar-footer{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:22px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:15px;
+  color:#d7edff;
+  font-size:.9rem;
+}
+
+.main{
+  min-width:0;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:40;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  padding:18px 34px;
+  background:rgba(6,20,38,.78);
+  border-bottom:1px solid rgba(56,189,248,.18);
+  backdrop-filter:blur(16px);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+.page-title strong{
+  color:#fff;
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.page-title span{
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.content{
+  padding:34px;
+}
+
+.section{
+  margin-bottom:28px;
+  animation:fadeUp .6s ease both;
+}
+
+.section h2{
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  font-size:1.35rem;
+  border-left:5px solid var(--gold);
+  padding-left:12px;
+  margin-bottom:8px;
+}
+
+.lead{
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:linear-gradient(135deg,rgba(15,39,67,.96),rgba(12,49,82,.88));
+  border:1px solid rgba(56,189,248,.18);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 18px 38px rgba(0,0,0,.25);
+  transition:.28s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(212,175,55,.5);
+}
+
+.card h3{
+  color:var(--gold2);
+  margin-bottom:10px;
+}
+
+.tipo-box{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.btn{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#07182c;
+  border:0;
+  padding:10px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  cursor:pointer;
+  display:inline-block;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.08);
+}
+
+.btn.secondary{
+  background:rgba(255,255,255,.08);
+  color:#e0f2fe;
+  border:1px solid rgba(56,189,248,.28);
+}
+
+.btn.active{
+  background:linear-gradient(135deg,#38bdf8,#0284c7);
+  color:#fff;
+}
+
+label{
+  display:block;
+  margin:10px 0 6px;
+  color:#eaf6ff;
+  font-weight:700;
+}
+
+input,textarea{
+  width:100%;
+  padding:12px 13px;
+  border-radius:12px;
+  border:1px solid rgba(56,189,248,.25);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  outline:none;
+  font-size:1rem;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+input::placeholder,textarea::placeholder{
+  color:#9fb8cc;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+#boletimGerado{
+  white-space:pre-wrap;
+  background:rgba(0,0,0,.24);
+  border:1px solid rgba(56,189,248,.20);
+  border-radius:18px;
+  padding:20px;
+  color:#f8fbff;
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:420px;
+}
+
+.alert{
+  background:rgba(251,191,36,.12);
+  border:1px solid rgba(212,175,55,.35);
+  color:#fde68a;
+  padding:16px;
+  border-radius:16px;
+  margin-bottom:18px;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid rgba(56,189,248,.16);
+  padding:26px;
+  margin-top:24px;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes gridMove{
+  from{background-position:0 0}
+  to{background-position:44px 44px}
+}
+
+@media(max-width:960px){
+  .app{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto}
+  .sidebar-footer{position:relative;left:auto;right:auto;bottom:auto;margin-top:20px}
+}
+
+@media(max-width:620px){
+  .topbar{flex-direction:column;align-items:flex-start;padding:16px}
+  .content{padding:18px}
+  .form-grid{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">GCM</div>
+      <h1>Guarda Civil Metropolitana <span>Baixada Santista</span></h1>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">🏠 Início</a>
+      <a href="painel.html">📊 Painel</a>
+      <a href="prisao.html">🚔 Prisões</a>
+      <a class="active" href="boletim.html">📄 Boletim</a>
+      <a href="formulario.html">📝 Formulário</a>
+      <a href="termos.html">📄 Termos</a>
+      <a href="privacidade.html">🔒 Privacidade</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <strong>Autoescrita de BO</strong><br>
+      Gere boletins automaticamente.
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="page-title">
+        <strong>Guarda Civil Metropolitana - Baixada Santista</strong>
+        <span>Autoescrita de Boletim de Ocorrência</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <section class="section">
+        <h2>Autoescrever Boletim de Ocorrência</h2>
+        <p class="lead">Escolha o tipo de unidade, preencha os dados e o boletim será gerado automaticamente.</p>
+
+        <div class="tipo-box">
+          <button class="btn active" id="btnCarro" onclick="trocarTipo('carro')">🚔 Viatura / Carro</button>
+          <button class="btn secondary" id="btnMoto" onclick="trocarTipo('moto')">🏍️ Motos / IAMO</button>
+          <button class="btn secondary" onclick="limparTudo()">Limpar tudo</button>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="section">
+          <div class="card">
+            <h3>Dados do Boletim</h3>
+
+            <div class="form-grid">
+              <div>
+                <label>Data</label>
+                <input type="date" id="data" oninput="gerarBoletim()">
+              </div>
+
+              <div>
+                <label>Horário da ocorrência</label>
+                <input type="time" id="horario" oninput="gerarBoletim()">
+              </div>
+            </div>
+
+            <label>Local da ocorrência</label>
+            <input type="text" id="local" placeholder="Ex: Praça Central, Baixada Santista" oninput="gerarBoletim()">
+
+            <div id="camposCarro">
+              <h3 style="margin-top:18px;">Unidade Responsável - Viatura</h3>
+
+              <label>Viatura prefixo</label>
+              <input type="text" id="viatura" placeholder="Ex: VTR-001" oninput="gerarBoletim()">
+
+              <label>Nome do Encarregado</label>
+              <input type="text" id="encarregado" placeholder="Nome do encarregado" oninput="gerarBoletim()">
+
+              <label>Motorista</label>
+              <input type="text" id="motorista" placeholder="Nome do motorista" oninput="gerarBoletim()">
+
+              <label>3º homem</label>
+              <input type="text" id="homem3" placeholder="Nome do 3º homem" oninput="gerarBoletim()">
+
+              <label>4º homem</label>
+              <input type="text" id="homem4" placeholder="Nome do 4º homem" oninput="gerarBoletim()">
+
+              <label>5º homem</label>
+              <input type="text" id="homem5" placeholder="Nome do 5º homem" oninput="gerarBoletim()">
+            </div>
+
+            <div id="camposMoto" style="display:none;">
+              <h3 style="margin-top:18px;">Unidade Responsável - IAMO</h3>
+
+              <label>Moto 1º</label>
+              <input type="text" id="moto1" placeholder="Nome/Prefixo da moto 1" oninput="gerarBoletim()">
+
+              <label>Moto 2º</label>
+              <input type="text" id="moto2" placeholder="Nome/Prefixo da moto 2" oninput="gerarBoletim()">
+
+              <label>Moto 3º</label>
+              <input type="text" id="moto3" placeholder="Nome/Prefixo da moto 3" oninput="gerarBoletim()">
+            </div>
+
+            <h3 style="margin-top:18px;">Dados do indivíduo</h3>
+
+            <label>Nome completo do indivíduo</label>
+            <input type="text" id="nomeIndividuo" placeholder="Nome completo" oninput="gerarBoletim()">
+
+            <label>RG do indivíduo</label>
+            <input type="text" id="rgIndividuo" placeholder="RG/ID" oninput="gerarBoletim()">
+
+            <label>Relato da ocorrência</label>
+            <textarea id="relato" placeholder="Descreva o relato da ocorrência..." oninput="gerarBoletim()"></textarea>
+
+            <h3 style="margin-top:18px;">Dados do Policial</h3>
+
+            <label>Nome completo do policial</label>
+            <input type="text" id="nomePolicial" placeholder="Nome completo" oninput="gerarBoletim()">
+
+            <label>RG do policial</label>
+            <input type="text" id="rgPolicial" placeholder="RG" oninput="gerarBoletim()">
+
+            <label>Telefone do policial</label>
+            <input type="text" id="telefonePolicial" placeholder="Telefone" oninput="gerarBoletim()">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <h3>Boletim Gerado</h3>
+            <div class="alert">O texto abaixo atualiza automaticamente enquanto você preenche.</div>
+            <div id="boletimGerado"></div>
+
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn" onclick="copiarBoletim()">Copiar boletim</button>
+              <button class="btn secondary" onclick="baixarTxt()">Baixar .txt</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Guarda Civil Metropolitana - Baixada Santista</p>
+      <p>Autoescrita de Boletim de Ocorrência</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+let tipoAtual = 'carro';
+
+function valor(id){
+  return document.getElementById(id)?.value.trim() || '';
+}
+
+function dataFormatada(){
+  const data = valor('data');
+  if(!data) return '';
+  const [ano, mes, dia] = data.split('-');
+  return `${dia}/${mes}/${ano}`;
+}
+
+function trocarTipo(tipo){
+  tipoAtual = tipo;
+
+  document.getElementById('camposCarro').style.display = tipo === 'carro' ? 'block' : 'none';
+  document.getElementById('camposMoto').style.display = tipo === 'moto' ? 'block' : 'none';
+
+  document.getElementById('btnCarro').className = tipo === 'carro' ? 'btn active' : 'btn secondary';
+  document.getElementById('btnMoto').className = tipo === 'moto' ? 'btn active' : 'btn secondary';
+
+  gerarBoletim();
+}
+
+function gerarBoletim(){
+  const data = dataFormatada();
+  const local = valor('local');
+  const horario = valor('horario');
+
+  const nomeIndividuo = valor('nomeIndividuo');
+  const rgIndividuo = valor('rgIndividuo');
+  const relato = valor('relato');
+
+  const nomePolicial = valor('nomePolicial');
+  const rgPolicial = valor('rgPolicial');
+  const telefonePolicial = valor('telefonePolicial');
+
+  let unidade = '';
+
+  if(tipoAtual === 'carro'){
+    unidade = `Unidade Responsável
+Viatura prefixo: ${valor('viatura')}
+Nome do Encarregado: ${valor('encarregado')}
+Motorista: ${valor('motorista')}
+3° homem: ${valor('homem3')}
+4° homem: ${valor('homem4')}
+5° homem: ${valor('homem5')}`;
+  }else{
+    unidade = `Unidade Responsável
+IAMO
+
+Moto 1°: ${valor('moto1')}
+Moto 2°: ${valor('moto2')}
+Moto 3°: ${valor('moto3')}`;
+  }
+
+  const texto = `Boletim ocorrência Guarda Municipal
+
+Data: ${data}
+Local da ocorrência: ${local}
+Horário da ocorrência: ${horario}
+
+${unidade}
+
+Dados do indivíduo
+Nome completo: ${nomeIndividuo}
+RG: ${rgIndividuo}
+
+Relato da ocorrência.
+
+${relato}
+
+
+Dados do Policial
+Nome completo: ${nomePolicial}
+RG: ${rgPolicial}
+Telefone: ${telefonePolicial}`;
+
+  document.getElementById('boletimGerado').textContent = texto;
+}
+
+async function copiarBoletim(){
+  const texto = document.getElementById('boletimGerado').textContent;
+  await navigator.clipboard.writeText(texto);
+  alert('Boletim copiado com sucesso!');
+}
+
+function baixarTxt(){
+  const texto = document.getElementById('boletimGerado').textContent;
+  const blob = new Blob([texto], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'boletim-ocorrencia-gcm.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function limparTudo(){
+  document.querySelectorAll('input, textarea').forEach(campo => campo.value = '');
+  gerarBoletim();
+}
+
+gerarBoletim();
+</script>
+</body>
+</html>
