@@ -19,6 +19,48 @@
 <a href="index.html">Início</a><a href="prisao.html">Prisões</a><a href="formulario.html">Formulário</a><a href="termos.html">Termos</a><a href="privacidade.html">Privacidade</a>
 </nav>
 
+
+<script>
+async function verificarAcessoFormulario() {
+  try {
+    const resposta = await fetch('https://backend-gcm-1.onrender.com/pode-enviar-formulario', {
+      credentials: 'include'
+    });
+
+    const dados = await resposta.json();
+
+    if (!resposta.ok || !dados.pode) {
+      document.body.innerHTML = `
+        <div style="min-height:100vh;display:grid;place-items:center;background:#0b1220;color:white;font-family:Arial;padding:20px;">
+          <div style="max-width:560px;background:#111c2f;border:1px solid #223653;border-radius:14px;padding:28px;text-align:center;">
+            <h1 style="color:#d4af37;margin-bottom:12px;">Acesso ao Formulário</h1>
+            <p style="margin-bottom:18px;">${dados.mensagem || 'Você não tem permissão para acessar este formulário.'}</p>
+            ${
+              dados.motivo === 'login_obrigatorio'
+                ? '<a href="login.html" style="background:#d4af37;color:#111;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">Fazer login</a>'
+                : dados.motivo === 'fora_do_servidor'
+                  ? `<a href="${dados.invite}" target="_blank" style="background:#d4af37;color:#111;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">Entrar no Discord</a>`
+                  : '<a href="index.html" style="background:#d4af37;color:#111;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">Voltar ao início</a>'
+            }
+          </div>
+        </div>
+      `;
+    }
+  } catch (erro) {
+    document.body.innerHTML = `
+      <div style="min-height:100vh;display:grid;place-items:center;background:#0b1220;color:white;font-family:Arial;padding:20px;">
+        <div style="max-width:560px;background:#111c2f;border:1px solid #223653;border-radius:14px;padding:28px;text-align:center;">
+          <h1 style="color:#d4af37;margin-bottom:12px;">Erro</h1>
+          <p>Não foi possível verificar o login. Veja se o backend está online.</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+verificarAcessoFormulario();
+</script>
+
 <main>
   <div class="aviso">
     Para ser aprovado no concurso, o candidato precisa acertar no mínimo <strong>16 de 20 perguntas</strong>.
@@ -249,6 +291,7 @@
 
     fetch('https://backend-gcm-1.onrender.com/formulario', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
