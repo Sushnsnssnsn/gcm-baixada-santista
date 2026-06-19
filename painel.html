@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel - GCM Baixada Santista</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1220;
+      color: #f5f5f5;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, #07111f, #0f2d4a);
+      padding: 55px 20px;
+      text-align: center;
+      border-bottom: 4px solid #d4af37;
+    }
+    h1, h2, h3 { color: #d4af37; }
+    nav {
+      background: #09111f;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+    nav a, nav button {
+      color: #fff;
+      background: transparent;
+      border: none;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    nav a:hover, nav button:hover { color: #d4af37; }
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+    .card {
+      background: #111c2f;
+      border: 1px solid #223653;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.28);
+      animation: fadeUp .6s ease both;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .option {
+      background: #13223a;
+      border-left: 4px solid #d4af37;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .option a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .alerta {
+      background: #2f2411;
+      border: 1px solid #d4af37;
+      color: #ffe9a6;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #111;
+      padding: 12px 18px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Painel GCM</h1>
+  <p>Guarda Civil Metropolitana - Baixada Santista</p>
+</header>
+
+<nav>
+  <a href="index.html">Início</a>
+  <a href="prisao.html">Prisões</a>
+  <a href="formulario.html">Formulário</a>
+  <button onclick="logout()">Sair</button>
+</nav>
+
+<main id="conteudo">
+  <div class="card">
+    <h2>Carregando...</h2>
+    <p>Verificando login com Discord.</p>
+  </div>
+</main>
+
+<script>
+const API = 'https://backend-gcm-1.onrender.com';
+
+async function carregarPainel() {
+  const conteudo = document.getElementById('conteudo');
+
+  try {
+    const res = await fetch(API + '/me', { credentials: 'include' });
+
+    if (!res.ok) {
+      conteudo.innerHTML = `
+        <div class="card">
+          <h2>Você não está logado</h2>
+          <p>Entre com Discord para acessar o painel.</p>
+          <a class="btn" href="login.html">Fazer login</a>
+        </div>
+      `;
+      return;
+    }
+
+    const data = await res.json();
+    const nome = data.user.global_name || data.user.username;
+
+    if (!data.inServer) {
+      conteudo.innerHTML = `
+        <div class="card">
+          <h2>Olá, ${nome}</h2>
+          <div class="alerta">
+            Você ainda não está no servidor da GCM. Entre no Discord para liberar mais opções.
+          </div>
+          <a class="btn" href="${data.invite}" target="_blank">Entrar no Discord</a>
+        </div>
+      `;
+      return;
+    }
+
+    if (!data.hasRole) {
+      conteudo.innerHTML = `
+        <div class="card">
+          <h2>Olá, ${nome}</h2>
+          <p>Você está no servidor, mas ainda não possui o cargo autorizado para acessar opções internas.</p>
+        </div>
+        <div class="grid">
+          <div class="option">
+            <h3>Opções disponíveis</h3>
+            <p>Você pode acessar o site, formulário, termos e privacidade.</p>
+            <a href="formulario.html">Ir para formulário</a>
+          </div>
+          <div class="option">
+            <h3>Servidor</h3>
+            <p>Para liberar funções internas, solicite seu cargo à administração.</p>
+            <a href="${data.invite}" target="_blank">Abrir Discord</a>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    conteudo.innerHTML = `
+      <div class="card">
+        <h2>Bem-vindo, ${nome}</h2>
+        <p>Acesso autorizado. Você possui o cargo necessário para opções internas da GCM.</p>
+      </div>
+
+      <div class="grid">
+        <div class="option">
+          <h3>Registrar Prisão</h3>
+          <p>Acesse a área de registros de prisões.</p>
+          <a href="prisao.html">Abrir prisões</a>
+        </div>
+        <div class="option">
+          <h3>Relatórios</h3>
+          <p>Área reservada para relatórios operacionais futuros.</p>
+          <a href="#">Em desenvolvimento</a>
+        </div>
+        <div class="option">
+          <h3>Apreensões</h3>
+          <p>Sistema de apreensões poderá ser integrado ao Discord.</p>
+          <a href="#">Em desenvolvimento</a>
+        </div>
+      </div>
+    `;
+  } catch (error) {
+    conteudo.innerHTML = `
+      <div class="card">
+        <h2>Erro ao carregar painel</h2>
+        <p>Verifique se o backend está online.</p>
+      </div>
+    `;
+  }
+}
+
+async function logout() {
+  await fetch(API + '/logout', { method: 'POST', credentials: 'include' });
+  window.location.href = 'login.html';
+}
+
+carregarPainel();
+</script>
+</body>
+</html>
