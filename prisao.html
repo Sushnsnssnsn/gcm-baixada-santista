@@ -1,58 +1,617 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Prisões - GCM Baixada Santista</title><style>
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top left,rgba(212,175,55,.12),transparent 35%),radial-gradient(circle at bottom right,rgba(15,45,74,.8),transparent 40%),#0b1220;color:#f5f5f5;line-height:1.7;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:-1}header{background:linear-gradient(135deg,rgba(7,17,31,.96),rgba(15,45,74,.96));padding:78px 20px;text-align:center;border-bottom:4px solid #d4af37;position:relative;overflow:hidden}header:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(212,175,55,.09);top:-190px;right:-120px;animation:pulseGlow 5s infinite alternate}header h1{font-size:clamp(2rem,5vw,3rem);color:#d4af37;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;animation:slideDown .8s ease both;position:relative;z-index:1}header p{font-size:1.1rem;color:#dbeafe;animation:fadeUp .9s ease both;position:relative;z-index:1}.badge{display:inline-block;margin-top:18px;padding:10px 16px;border:1px solid #d4af37;border-radius:999px;color:#d4af37;font-weight:bold;position:relative;z-index:1;animation:fadeUp 1s ease both}nav{background:rgba(9,17,31,.92);backdrop-filter:blur(10px);padding:15px;text-align:center;position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(212,175,55,.25)}nav a{color:#fff;text-decoration:none;margin:0 10px;font-weight:bold;display:inline-block;padding:8px 10px;border-radius:999px;transition:.2s}nav a:hover{color:#111;background:#d4af37;transform:translateY(-2px)}main,section{max-width:1100px;margin:auto;padding:45px 20px}h2{color:#d4af37;margin-bottom:20px;border-left:5px solid #d4af37;padding-left:12px;text-transform:uppercase;letter-spacing:.4px}h3{color:#d4af37;margin-bottom:10px}.card,.question{background:rgba(17,28,47,.92);border:1px solid #223653;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 12px 26px rgba(0,0,0,.28);animation:fadeUp .7s ease both;transition:.25s}.card:hover,.question:hover,.member:hover{transform:translateY(-4px);border-color:#d4af37;box-shadow:0 16px 32px rgba(0,0,0,.38)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.member{background:rgba(19,34,58,.95);border-radius:12px;padding:16px;border-left:4px solid #d4af37;transition:.25s;animation:fadeUp .7s ease both}.member strong{display:block;color:#fff;font-size:1.05rem}.member span{color:#b7c7db;font-size:.95rem}.aviso{background:rgba(47,36,17,.95);border:1px solid #d4af37;color:#ffe9a6;padding:18px;border-radius:12px;margin-bottom:22px}label{display:block;margin:8px 0;cursor:pointer}input[type=text],input[type=number],textarea{width:100%;padding:12px;margin:8px 0 15px;border:1px solid transparent;border-radius:8px;background:#e8eef7;color:#111;font-size:1rem;outline:none;transition:.2s}input:focus,textarea:focus{border-color:#d4af37;box-shadow:0 0 0 3px rgba(212,175,55,.25)}textarea{min-height:95px;resize:vertical}input[type=radio]{margin-right:8px}button{background:#d4af37;color:#111;border:0;padding:14px 22px;border-radius:9px;font-weight:bold;cursor:pointer;font-size:1rem;transition:.2s}button:hover{filter:brightness(1.1);transform:translateY(-2px)}#resultado{display:none;padding:22px;border-radius:12px;margin-top:25px;background:#0f2d4a;border:1px solid #d4af37;animation:fadeUp .5s ease both}.aprovado{color:#8cffb3;font-weight:bold;font-size:1.2rem}.reprovado{color:#ff9b9b;font-weight:bold;font-size:1.2rem}ul{margin-left:22px}li{margin-bottom:8px}footer{text-align:center;background:#07111f;color:#aebed0;padding:25px;border-top:2px solid #d4af37}@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes slideDown{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:translateY(0)}}@keyframes pulseGlow{from{transform:scale(1);opacity:.5}to{transform:scale(1.18);opacity:.95}}@media(max-width:700px){nav a{margin:4px;font-size:.9rem}header{padding:58px 16px}}
-</style>
-<style id="gcm-auth-style">
-.gcm-user-box{
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prisões - GCM Baixada Santista</title>
+  <style>
+:root{
+  --bg:#061426;
+  --bg2:#0b1f38;
+  --panel:#0f2743;
+  --panel2:#123255;
+  --sidebar:#07182c;
+  --sidebar2:#0b2a4a;
+  --gold:#d4af37;
+  --gold2:#f3d46b;
+  --text:#f8fbff;
+  --muted:#b8cbe0;
+  --border:#244b70;
+  --blue:#38bdf8;
+  --blue2:#0284c7;
+  --green:#34d399;
+  --red:#fb7185;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 32%),
+    radial-gradient(circle at bottom right,rgba(212,175,55,.12),transparent 38%),
+    linear-gradient(135deg,#061426,#09213d 48%,#061426);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  pointer-events:none;
+  z-index:-1;
+  animation:gridMove 22s linear infinite;
+}
+
+.app{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:250px 1fr;
+}
+
+.sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  background:linear-gradient(180deg,var(--sidebar),var(--sidebar2));
+  border-right:1px solid rgba(56,189,248,.18);
+  padding:22px 18px;
+  z-index:50;
+  box-shadow:18px 0 48px rgba(0,0,0,.28);
+  animation:slideLeft .65s ease both;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:26px;
+  padding:8px 8px 18px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  min-width:46px;
+  border-radius:17px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  display:grid;
+  place-items:center;
+  color:#061426;
+  font-weight:900;
+  box-shadow:0 16px 30px rgba(0,0,0,.35);
+  animation:floatLogo 3s ease-in-out infinite;
+}
+
+.brand h1{
+  font-size:1rem;
+  line-height:1.18;
+  color:#fff;
+  text-transform:uppercase;
+}
+
+.brand span{
+  display:block;
+  color:#bfdbfe;
+  font-size:.78rem;
+  text-transform:none;
+  margin-top:2px;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+  padding:4px;
+}
+
+.menu a{
+  color:#eaf6ff;
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius:16px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  transition:transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.035);
+  position:relative;
+  overflow:hidden;
+}
+
+.menu a::before{
+  content:"";
   position:absolute;
-  top:20px;
-  right:20px;
-  z-index:999;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background:transparent;
+  transition:.25s;
+}
+
+.menu a:hover,
+.menu a.active{
+  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(212,175,55,.10));
+  border-color:rgba(56,189,248,.35);
+  color:var(--gold2);
+  transform:translateX(7px) scale(1.02);
+  box-shadow:0 14px 28px rgba(0,0,0,.22);
+}
+
+.menu a:hover::before,
+.menu a.active::before{
+  background:var(--gold);
+}
+
+.sidebar-footer{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:22px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:15px;
+  color:#d7edff;
+  font-size:.9rem;
+  box-shadow:0 14px 28px rgba(0,0,0,.18);
+}
+
+.main{
+  min-width:0;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:40;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  padding:18px 34px;
+  background:rgba(6,20,38,.78);
+  border-bottom:1px solid rgba(56,189,248,.18);
+  backdrop-filter:blur(16px);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  animation:slideDown .55s ease both;
+}
+
+.page-title strong{
+  color:#ffffff;
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.page-title span{
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.user-box{
   display:flex;
   align-items:center;
   gap:10px;
-  background:rgba(9,17,31,.92);
-  border:1px solid #d4af37;
+  background:rgba(15,39,67,.94);
+  border:1px solid rgba(56,189,248,.25);
   border-radius:999px;
   padding:8px 12px;
-  box-shadow:0 8px 18px rgba(0,0,0,.25);
+  box-shadow:0 14px 28px rgba(0,0,0,.25);
 }
-.gcm-user-box img{
-  width:34px;
-  height:34px;
+
+.user-box img{
+  width:36px;
+  height:36px;
   border-radius:50%;
-  object-fit:cover;
+  border:2px solid var(--blue);
 }
-.gcm-user-box span{
+
+.user-box span{
+  font-weight:800;
   color:#fff;
-  font-weight:bold;
-  font-size:.95rem;
 }
-.gcm-user-box a,.gcm-user-box button{
-  background:#d4af37;
-  color:#111;
+
+.user-box a,
+.user-box button,
+.btn{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#07182c;
   border:0;
-  text-decoration:none;
-  padding:8px 12px;
+  padding:7px 11px;
   border-radius:999px;
-  font-weight:bold;
+  text-decoration:none;
+  font-weight:900;
   cursor:pointer;
+  display:inline-block;
+  transition:transform .25s ease, filter .25s ease, box-shadow .25s ease;
+  box-shadow:0 10px 18px rgba(212,175,55,.22);
 }
-@media(max-width:700px){
-  .gcm-user-box{
-    position:relative;
-    top:auto;
-    right:auto;
-    justify-content:center;
-    margin:0 auto 15px;
-    width:fit-content;
-  }
+
+.user-box a:hover,
+.user-box button:hover,
+.btn:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.08);
+  box-shadow:0 14px 26px rgba(212,175,55,.30);
+}
+
+.hero{
+  margin:34px;
+  padding:44px;
+  border:1px solid rgba(56,189,248,.20);
+  border-radius:30px;
+  background:
+    linear-gradient(135deg,rgba(10,38,68,.94),rgba(6,20,38,.96)),
+    radial-gradient(circle at top right,rgba(56,189,248,.16),transparent 40%);
+  box-shadow:0 30px 75px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+  animation:fadeUp .75s ease both;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:rgba(56,189,248,.12);
+  bottom:-130px;
+  left:-85px;
+  animation:pulse 4s infinite alternate;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:410px;
+  height:410px;
+  border-radius:50%;
+  background:rgba(212,175,55,.12);
+  top:-190px;
+  right:-120px;
+  animation:pulse 4.5s infinite alternate;
+}
+
+.hero-content{
+  max-width:900px;
+  position:relative;
+  z-index:1;
+}
+
+.kicker{
+  color:var(--blue);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:10px;
+}
+
+.hero h2{
+  font-size:clamp(2rem,5vw,3.8rem);
+  line-height:1.05;
+  color:#fff;
+  margin-bottom:16px;
+}
+
+.hero p{
+  color:#dbeafe;
+  max-width:800px;
+  font-size:1.08rem;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:24px;
+}
+
+.btn.secondary{
+  background:rgba(255,255,255,.08);
+  color:#e0f2fe;
+  border:1px solid rgba(56,189,248,.28);
+  box-shadow:0 10px 18px rgba(0,0,0,.16);
+}
+
+.content{
+  padding:0 34px 42px;
+}
+
+.section{
+  margin-top:32px;
+  animation:fadeUp .75s ease both;
+}
+
+.section:nth-child(2){animation-delay:.08s}
+.section:nth-child(3){animation-delay:.14s}
+.section:nth-child(4){animation-delay:.20s}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.section h2{
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  font-size:1.35rem;
+  border-left:5px solid var(--gold);
+  padding-left:12px;
+}
+
+.section p.lead{
+  color:var(--muted);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+
+.stat-card,
+.card,
+.member,
+.quick-card{
+  background:linear-gradient(135deg,rgba(15,39,67,.96),rgba(12,49,82,.88));
+  border:1px solid rgba(56,189,248,.18);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 18px 38px rgba(0,0,0,.25);
+  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.stat-card::after,
+.card::after,
+.quick-card::after{
+  content:"";
+  position:absolute;
+  inset:auto -45px -55px auto;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:rgba(56,189,248,.08);
+}
+
+.stat-card:hover,
+.card:hover,
+.member:hover,
+.quick-card:hover{
+  transform:translateY(-8px) scale(1.012);
+  border-color:rgba(212,175,55,.52);
+  box-shadow:0 28px 58px rgba(0,0,0,.34);
+}
+
+.stat-card .icon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  background:rgba(56,189,248,.14);
+  color:var(--blue);
+  margin-bottom:14px;
+  font-size:1.35rem;
+}
+
+.stat-card strong{
+  display:block;
+  font-size:2rem;
+  color:#fff;
+  line-height:1;
+}
+
+.stat-card span{
+  color:var(--muted);
+  font-weight:800;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+
+.quick-card h3,
+.card h3{
+  color:var(--gold2);
+  margin-bottom:8px;
+}
+
+.quick-card p,
+.card p{
+  color:#d7e7f6;
+}
+
+.quick-card a{
+  margin-top:14px;
+}
+
+.members{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+}
+
+.member{
+  border-left:5px solid var(--gold);
+}
+
+.member strong{
+  display:block;
+  color:#fff;
+}
+
+.member span{
+  color:var(--muted);
+  font-size:.95rem;
+  font-weight:700;
+}
+
+.timeline{
+  display:grid;
+  gap:14px;
+}
+
+.timeline-item{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:16px;
+  background:linear-gradient(135deg,rgba(15,39,67,.96),rgba(12,49,82,.88));
+  border:1px solid rgba(56,189,248,.18);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 14px 32px rgba(0,0,0,.22);
+  animation:fadeUp .75s ease both;
+}
+
+.timeline-item time{
+  color:var(--blue);
+  font-weight:900;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid rgba(56,189,248,.16);
+  padding:26px;
+  margin-top:24px;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(26px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes slideLeft{
+  from{opacity:0;transform:translateX(-35px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes pulse{
+  from{transform:scale(1);opacity:.55}
+  to{transform:scale(1.18);opacity:1}
+}
+
+@keyframes floatLogo{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+@keyframes gridMove{
+  from{background-position:0 0}
+  to{background-position:44px 44px}
+}
+
+@media(max-width:960px){
+  .app{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto}
+  .sidebar-footer{position:relative;left:auto;right:auto;bottom:auto;margin-top:20px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:620px){
+  .topbar{flex-direction:column;align-items:flex-start;padding:16px}
+  .hero{margin:16px;padding:26px}
+  .content{padding:0 16px 30px}
+  .stats{grid-template-columns:1fr}
+  .timeline-item{grid-template-columns:1fr}
+  .user-box{flex-wrap:wrap;border-radius:18px}
+  .sidebar{padding:18px 14px}
+  .menu a{padding:12px 14px}
 }
 </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">GCM</div>
+      <h1>Guarda Civil Metropolitana <span>Baixada Santista</span></h1>
+    </div>
+    <nav class="menu">
+      <a class="" href="index.html">🏠 Início</a>
+      <a class="" href="painel.html">📊 Painel</a>
+      <a class="active" href="prisao.html">🚔 Prisões</a>
+      <a class="" href="formulario.html">📝 Formulário</a>
+      <a class="" href="termos.html">📄 Termos</a>
+      <a class="" href="privacidade.html">🔒 Privacidade</a>
+    </nav>
+    <div class="sidebar-footer">
+      <strong>Status do Portal</strong><br>
+      Sistema institucional online.
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div class="page-title">
+        <strong>Guarda Civil Metropolitana - Baixada Santista</strong>
+        <span>Portal operacional e institucional</span>
+      </div>
+      <div class="user-box" id="userBox"></div>
+    </div>
 
-</head><body><header><h1>Registro de Prisões</h1><p>Guarda Civil Metropolitana - Baixada Santista</p></header><nav>
-<a href="index.html">Início</a><a href="prisao.html">Prisões</a><a href="formulario.html">Formulário</a><a href="termos.html">Termos</a><a href="privacidade.html">Privacidade</a>
-</nav><main><div class="aviso">Área destinada aos registros de prisões da GCM Baixada Santista.</div><section><h2>Prisões Registradas</h2><div class="card"><h3>Prisão #001</h3><p><strong>Nome do Preso:</strong> Aguardando registro</p><p><strong>RG/ID:</strong> -</p><p><strong>Crime:</strong> -</p><p><strong>Agente Responsável:</strong> -</p><p><strong>Data:</strong> -</p><p><strong>Observações:</strong> -</p></div></section></main><footer><p>© 2026 Guarda Civil Metropolitana - Baixada Santista</p><p>Registro de Prisões</p></footer>
-<script id="gcm-auth-script">
+    <div class="content">
+      <section class="section">
+        <h2>Registro de Prisões</h2>
+        <p class="lead">Área destinada aos registros de prisões da GCM Baixada Santista.</p>
+        <div class="grid" style="margin-top:16px">
+          <div class="card">
+            <h3>Prisão #001</h3>
+            <p><strong>Nome do Preso:</strong> Aguardando registro</p>
+            <p><strong>RG/ID:</strong> -</p>
+            <p><strong>Crime:</strong> -</p>
+            <p><strong>Agente Responsável:</strong> -</p>
+            <p><strong>Data:</strong> -</p>
+            <p><strong>Observações:</strong> -</p>
+          </div>
+          <div class="card">
+            <h3>Integração futura</h3>
+            <p>Este módulo pode ser ligado ao Discord para registrar prisões automaticamente pelo painel.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>© 2026 Guarda Civil Metropolitana - Baixada Santista</p>
+      <p>Portal institucional</p>
+    </footer>
+  </main>
+</div>
+
+<script>
 const GCM_API = 'https://backend-gcm-1.onrender.com';
 
 function gcmToken(){
@@ -73,17 +632,18 @@ function gcmSaveTokenFromUrl(){
 async function gcmMe(){
   const token = gcmToken();
   if(!token) return null;
-
-  const res = await fetch(GCM_API + '/me', {
-    headers: { 'Authorization': 'Bearer ' + token }
-  });
-
-  if(!res.ok){
-    localStorage.removeItem('gcm_token');
+  try{
+    const res = await fetch(GCM_API + '/me', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    if(!res.ok){
+      localStorage.removeItem('gcm_token');
+      return null;
+    }
+    return await res.json();
+  }catch(e){
     return null;
   }
-
-  return await res.json();
 }
 
 function gcmAvatarUrl(user){
@@ -93,39 +653,25 @@ function gcmAvatarUrl(user){
   return 'https://cdn.discordapp.com/embed/avatars/0.png';
 }
 
-async function gcmRenderUserBox(){
+async function renderUser(){
   gcmSaveTokenFromUrl();
-
-  const header = document.querySelector('header') || document.body;
-  if(getComputedStyle(header).position === 'static'){
-    header.style.position = 'relative';
-  }
-
-  const antigo = document.getElementById('gcm-user-box');
-  if(antigo) antigo.remove();
-
+  const box = document.getElementById('userBox');
+  if(!box) return;
   const data = await gcmMe();
-
-  const box = document.createElement('div');
-  box.id = 'gcm-user-box';
-  box.className = 'gcm-user-box';
-
   if(data && data.logged){
     const nome = data.user.global_name || data.user.username || 'Usuário';
     box.innerHTML = `
       <img src="${gcmAvatarUrl(data.user)}" alt="Avatar">
       <span>${nome}</span>
       <a href="painel.html">Painel</a>
-      <button type="button" onclick="gcmLogout()">Sair</button>
+      <button onclick="gcmLogout()">Sair</button>
     `;
-  } else {
+  }else{
     box.innerHTML = `
       <a href="login.html">Login</a>
       <a href="painel.html">Painel</a>
     `;
   }
-
-  header.prepend(box);
 }
 
 function gcmLogout(){
@@ -133,7 +679,8 @@ function gcmLogout(){
   window.location.href = 'login.html';
 }
 
-document.addEventListener('DOMContentLoaded', gcmRenderUserBox);
+document.addEventListener('DOMContentLoaded', renderUser);
 </script>
 
-</body></html>
+</body>
+</html>
