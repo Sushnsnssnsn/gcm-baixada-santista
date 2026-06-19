@@ -5,30 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulário do Concurso - GCM Baixada Santista</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, Helvetica, sans-serif; background: #0b1220; color: #f5f5f5; line-height: 1.7; }
-    header { background: linear-gradient(135deg, #07111f, #0f2d4a); padding: 60px 20px; text-align: center; border-bottom: 4px solid #d4af37; }
-    header h1 { color: #d4af37; font-size: 2.2rem; text-transform: uppercase; margin-bottom: 10px; }
-    header p { color: #dbeafe; font-size: 1.1rem; }
-    nav { background: #09111f; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 10; }
-    nav a { color: white; text-decoration: none; font-weight: bold; margin: 0 10px; }
-    nav a:hover { color: #d4af37; }
-    main { max-width: 1000px; margin: auto; padding: 45px 20px; }
-    section, .question { background: #111c2f; border: 1px solid #223653; border-radius: 12px; padding: 25px; margin-bottom: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-    h2 { color: #d4af37; margin-bottom: 12px; border-left: 5px solid #d4af37; padding-left: 12px; }
-    h3 { color: #d4af37; margin-bottom: 12px; }
-    label { display: block; margin: 8px 0; cursor: pointer; }
-    input[type="text"], input[type="number"], textarea { width: 100%; padding: 12px; margin: 8px 0 15px; border: none; border-radius: 8px; background: #e8eef7; color: #111; font-size: 1rem; }
-    textarea { min-height: 90px; resize: vertical; }
-    input[type="radio"] { margin-right: 8px; }
-    button { background: #d4af37; color: #111; border: none; padding: 14px 22px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
-    button:hover { filter: brightness(1.1); }
-    .aviso { background: #2f2411; border: 1px solid #d4af37; color: #ffe9a6; padding: 18px; border-radius: 10px; margin-bottom: 22px; }
-    #resultado { display: none; padding: 22px; border-radius: 12px; margin-top: 25px; background: #0f2d4a; border: 1px solid #d4af37; }
-    .aprovado { color: #8cffb3; font-weight: bold; font-size: 1.2rem; }
-    .reprovado { color: #ff9b9b; font-weight: bold; font-size: 1.2rem; }
-    footer { text-align: center; background: #07111f; color: #aebed0; padding: 25px; border-top: 2px solid #d4af37; }
-  </style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top left,rgba(212,175,55,.12),transparent 35%),radial-gradient(circle at bottom right,rgba(15,45,74,.8),transparent 40%),#0b1220;color:#f5f5f5;line-height:1.7;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:-1}header{background:linear-gradient(135deg,rgba(7,17,31,.96),rgba(15,45,74,.96));padding:78px 20px;text-align:center;border-bottom:4px solid #d4af37;position:relative;overflow:hidden}header:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(212,175,55,.09);top:-190px;right:-120px;animation:pulseGlow 5s infinite alternate}header h1{font-size:clamp(2rem,5vw,3rem);color:#d4af37;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;animation:slideDown .8s ease both;position:relative;z-index:1}header p{font-size:1.1rem;color:#dbeafe;animation:fadeUp .9s ease both;position:relative;z-index:1}.badge{display:inline-block;margin-top:18px;padding:10px 16px;border:1px solid #d4af37;border-radius:999px;color:#d4af37;font-weight:bold;position:relative;z-index:1;animation:fadeUp 1s ease both}nav{background:rgba(9,17,31,.92);backdrop-filter:blur(10px);padding:15px;text-align:center;position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(212,175,55,.25)}nav a{color:#fff;text-decoration:none;margin:0 10px;font-weight:bold;display:inline-block;padding:8px 10px;border-radius:999px;transition:.2s}nav a:hover{color:#111;background:#d4af37;transform:translateY(-2px)}main,section{max-width:1100px;margin:auto;padding:45px 20px}h2{color:#d4af37;margin-bottom:20px;border-left:5px solid #d4af37;padding-left:12px;text-transform:uppercase;letter-spacing:.4px}h3{color:#d4af37;margin-bottom:10px}.card,.question{background:rgba(17,28,47,.92);border:1px solid #223653;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 12px 26px rgba(0,0,0,.28);animation:fadeUp .7s ease both;transition:.25s}.card:hover,.question:hover,.member:hover{transform:translateY(-4px);border-color:#d4af37;box-shadow:0 16px 32px rgba(0,0,0,.38)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.member{background:rgba(19,34,58,.95);border-radius:12px;padding:16px;border-left:4px solid #d4af37;transition:.25s;animation:fadeUp .7s ease both}.member strong{display:block;color:#fff;font-size:1.05rem}.member span{color:#b7c7db;font-size:.95rem}.aviso{background:rgba(47,36,17,.95);border:1px solid #d4af37;color:#ffe9a6;padding:18px;border-radius:12px;margin-bottom:22px}label{display:block;margin:8px 0;cursor:pointer}input[type=text],input[type=number],textarea{width:100%;padding:12px;margin:8px 0 15px;border:1px solid transparent;border-radius:8px;background:#e8eef7;color:#111;font-size:1rem;outline:none;transition:.2s}input:focus,textarea:focus{border-color:#d4af37;box-shadow:0 0 0 3px rgba(212,175,55,.25)}textarea{min-height:95px;resize:vertical}input[type=radio]{margin-right:8px}button{background:#d4af37;color:#111;border:0;padding:14px 22px;border-radius:9px;font-weight:bold;cursor:pointer;font-size:1rem;transition:.2s}button:hover{filter:brightness(1.1);transform:translateY(-2px)}#resultado{display:none;padding:22px;border-radius:12px;margin-top:25px;background:#0f2d4a;border:1px solid #d4af37;animation:fadeUp .5s ease both}.aprovado{color:#8cffb3;font-weight:bold;font-size:1.2rem}.reprovado{color:#ff9b9b;font-weight:bold;font-size:1.2rem}ul{margin-left:22px}li{margin-bottom:8px}footer{text-align:center;background:#07111f;color:#aebed0;padding:25px;border-top:2px solid #d4af37}@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes slideDown{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:translateY(0)}}@keyframes pulseGlow{from{transform:scale(1);opacity:.5}to{transform:scale(1.18);opacity:.95}}@media(max-width:700px){nav a{margin:4px;font-size:.9rem}header{padding:58px 16px}}
+</style>
 </head>
 <body>
 
@@ -38,10 +16,7 @@
 </header>
 
 <nav>
-  <a href="index.html">Início</a>
-  <a href="formulario.html">Formulário</a>
-  <a href="termos.html">Termos de Uso</a>
-  <a href="privacidade.html">Privacidade</a>
+<a href="index.html">Início</a><a href="prisao.html">Prisões</a><a href="formulario.html">Formulário</a><a href="termos.html">Termos</a><a href="privacidade.html">Privacidade</a>
 </nav>
 
 <main>
@@ -54,7 +29,7 @@
     <label>Nome completo</label>
     <input type="text" id="nome" placeholder="Digite seu nome completo" required>
 
-    <label>Nome do discord(caso não coloque, não será chamado!</label>
+    <label>ID ou nome no Discord</label>
     <input type="text" id="discord" placeholder="Ex: Juan#0000 ou @usuario" required>
 
     <label>Idade</label>
@@ -69,123 +44,134 @@
 
     <div class="question">
       <h3>1. Qual é a principal função da GCM?</h3>
-      <label><input type="radio" name="q1" value="b"> Criar leis municipais</label>
       <label><input type="radio" name="q1" value="a"> Atuar de forma preventiva na segurança urbana</label>
+      <label><input type="radio" name="q1" value="b"> Criar leis municipais</label>
       <label><input type="radio" name="q1" value="c"> Substituir o Poder Judiciário</label>
     </div>
+
     <div class="question">
       <h3>2. O que significa hierarquia dentro da corporação?</h3>
-      <label><input type="radio" name="q2" value="c"> Ausência de comando</label>
       <label><input type="radio" name="q2" value="a"> Organização por cargos, funções e responsabilidades</label>
       <label><input type="radio" name="q2" value="b"> Todos fazem o que quiserem</label>
+      <label><input type="radio" name="q2" value="c"> Ausência de comando</label>
     </div>
+
     <div class="question">
       <h3>3. Durante uma abordagem, o agente deve agir com:</h3>
       <label><input type="radio" name="q3" value="a"> Calma, técnica e respeito</label>
-      <label><input type="radio" name="q3" value="c"> Deboche e provocação</label>
       <label><input type="radio" name="q3" value="b"> Agressividade sem necessidade</label>
+      <label><input type="radio" name="q3" value="c"> Deboche e provocação</label>
     </div>
+
     <div class="question">
       <h3>4. Um relatório de ocorrência deve conter:</h3>
+      <label><input type="radio" name="q4" value="a"> Dados claros, local, horário, envolvidos e descrição dos fatos</label>
       <label><input type="radio" name="q4" value="b"> Apenas opinião pessoal</label>
       <label><input type="radio" name="q4" value="c"> Informações inventadas</label>
-      <label><input type="radio" name="q4" value="a"> Dados claros, local, horário, envolvidos e descrição dos fatos</label>
     </div>
+
     <div class="question">
       <h3>5. O respeito à população é importante porque:</h3>
-      <label><input type="radio" name="q5" value="c"> Permite abuso de autoridade</label>
       <label><input type="radio" name="q5" value="a"> Fortalece a confiança entre guarda e cidadão</label>
       <label><input type="radio" name="q5" value="b"> Diminui a responsabilidade do agente</label>
+      <label><input type="radio" name="q5" value="c"> Permite abuso de autoridade</label>
     </div>
+
     <div class="question">
       <h3>6. O uso adequado dos canais da GCM significa:</h3>
-      <label><input type="radio" name="q6" value="b"> Fazer spam em todos os canais</label>
       <label><input type="radio" name="q6" value="a"> Usar cada canal para sua finalidade correta</label>
+      <label><input type="radio" name="q6" value="b"> Fazer spam em todos os canais</label>
       <label><input type="radio" name="q6" value="c"> Mandar mensagens fora do tema sempre que quiser</label>
     </div>
+
     <div class="question">
       <h3>7. Em caso de dúvida durante o serviço, o agente deve:</h3>
-      <label><input type="radio" name="q7" value="c"> Criar uma regra própria</label>
-      <label><input type="radio" name="q7" value="b"> Ignorar a situação</label>
       <label><input type="radio" name="q7" value="a"> Procurar orientação de um superior</label>
+      <label><input type="radio" name="q7" value="b"> Ignorar a situação</label>
+      <label><input type="radio" name="q7" value="c"> Criar uma regra própria</label>
     </div>
+
     <div class="question">
       <h3>8. Disciplina dentro da GCM significa:</h3>
       <label><input type="radio" name="q8" value="a"> Cumprir regras, ordens legais e procedimentos</label>
-      <label><input type="radio" name="q8" value="c"> Agir sem responsabilidade</label>
       <label><input type="radio" name="q8" value="b"> Desrespeitar superiores</label>
+      <label><input type="radio" name="q8" value="c"> Agir sem responsabilidade</label>
     </div>
+
     <div class="question">
       <h3>9. Se um membro descumprir as regras, ele pode receber:</h3>
-      <label><input type="radio" name="q9" value="b"> Promoção automática</label>
       <label><input type="radio" name="q9" value="a"> Medida disciplinar conforme a gravidade</label>
+      <label><input type="radio" name="q9" value="b"> Promoção automática</label>
       <label><input type="radio" name="q9" value="c"> Isenção de todas as regras</label>
     </div>
+
     <div class="question">
       <h3>10. Qual atitude representa profissionalismo?</h3>
-      <label><input type="radio" name="q10" value="c"> Divulgar informações internas sem autorização</label>
       <label><input type="radio" name="q10" value="a"> Respeitar regras, colegas, superiores e cidadãos</label>
       <label><input type="radio" name="q10" value="b"> Ofender candidatos e membros</label>
+      <label><input type="radio" name="q10" value="c"> Divulgar informações internas sem autorização</label>
     </div>
+
+
     <div class="question">
       <h3>11. Qual deve ser a postura do agente diante de uma ordem legal de um superior?</h3>
+      <label><input type="radio" name="q11" value="a"> Cumprir a ordem com disciplina e responsabilidade</label>
       <label><input type="radio" name="q11" value="b"> Ignorar a ordem sem justificativa</label>
       <label><input type="radio" name="q11" value="c"> Discutir publicamente com o superior</label>
-      <label><input type="radio" name="q11" value="a"> Cumprir a ordem com disciplina e responsabilidade</label>
     </div>
     <div class="question">
       <h3>12. Em uma ocorrência, qual informação é importante registrar?</h3>
       <label><input type="radio" name="q12" value="a"> Local, horário, envolvidos e descrição dos fatos</label>
-      <label><input type="radio" name="q12" value="c"> Informações inventadas</label>
       <label><input type="radio" name="q12" value="b"> Apenas o nome do agente</label>
+      <label><input type="radio" name="q12" value="c"> Informações inventadas</label>
     </div>
     <div class="question">
       <h3>13. O que o agente deve evitar durante o serviço?</h3>
-      <label><input type="radio" name="q13" value="b"> Respeitar a população</label>
       <label><input type="radio" name="q13" value="a"> Abuso de autoridade e ofensas</label>
+      <label><input type="radio" name="q13" value="b"> Respeitar a população</label>
       <label><input type="radio" name="q13" value="c"> Cumprir regras</label>
     </div>
     <div class="question">
       <h3>14. Qual atitude é correta ao presenciar uma infração disciplinar?</h3>
-      <label><input type="radio" name="q14" value="c"> Ignorar sempre</label>
-      <label><input type="radio" name="q14" value="b"> Participar da infração</label>
       <label><input type="radio" name="q14" value="a"> Informar ao superior responsável</label>
+      <label><input type="radio" name="q14" value="b"> Participar da infração</label>
+      <label><input type="radio" name="q14" value="c"> Ignorar sempre</label>
     </div>
     <div class="question">
       <h3>15. O que representa comunicação profissional?</h3>
-      <label><input type="radio" name="q15" value="b"> Xingamentos</label>
       <label><input type="radio" name="q15" value="a"> Clareza e respeito</label>
+      <label><input type="radio" name="q15" value="b"> Xingamentos</label>
       <label><input type="radio" name="q15" value="c"> Deboche</label>
     </div>
     <div class="question">
       <h3>16. O agente deve preservar informações internas?</h3>
-      <label><input type="radio" name="q16" value="c"> Apenas às vezes</label>
       <label><input type="radio" name="q16" value="a"> Sim, quando forem restritas</label>
       <label><input type="radio" name="q16" value="b"> Não</label>
+      <label><input type="radio" name="q16" value="c"> Apenas às vezes</label>
     </div>
     <div class="question">
       <h3>17. O trabalho em equipe é importante porque:</h3>
       <label><input type="radio" name="q17" value="a"> Melhora a eficiência do serviço</label>
-      <label><input type="radio" name="q17" value="c"> Não faz diferença</label>
       <label><input type="radio" name="q17" value="b"> Atrapalha o serviço</label>
+      <label><input type="radio" name="q17" value="c"> Não faz diferença</label>
     </div>
     <div class="question">
       <h3>18. Qual comportamento demonstra ética?</h3>
+      <label><input type="radio" name="q18" value="a"> Honestidade e responsabilidade</label>
       <label><input type="radio" name="q18" value="b"> Mentir em relatórios</label>
       <label><input type="radio" name="q18" value="c"> Favorecimentos indevidos</label>
-      <label><input type="radio" name="q18" value="a"> Honestidade e responsabilidade</label>
     </div>
     <div class="question">
       <h3>19. Em patrulhamento, o agente deve:</h3>
-      <label><input type="radio" name="q19" value="c"> Ignorar ocorrências</label>
       <label><input type="radio" name="q19" value="a"> Manter atenção constante</label>
       <label><input type="radio" name="q19" value="b"> Distração total</label>
+      <label><input type="radio" name="q19" value="c"> Ignorar ocorrências</label>
     </div>
     <div class="question">
       <h3>20. Qual valor é essencial para a GCM?</h3>
+      <label><input type="radio" name="q20" value="a"> Disciplina e respeito</label>
       <label><input type="radio" name="q20" value="b"> Desorganização</label>
       <label><input type="radio" name="q20" value="c"> Indisciplina</label>
-      <label><input type="radio" name="q20" value="a"> Disciplina e respeito</label>
     </div>
 
     <button type="submit">Finalizar Formulário</button>
@@ -239,10 +225,9 @@
     const totalPerguntas = Object.keys(respostas).length;
     const porcentagem = Math.round((pontos / totalPerguntas) * 100);
     const aprovado = pontos >= 16;
-
     const chance = aprovado
       ? "Alta chance de aprovação no processo seletivo."
-      : pontos >= 12
+      : pontos >= 6
         ? "Chance média. Estude mais para aumentar sua nota."
         : "Chance baixa. Recomendado revisar as regras e tentar novamente.";
 
@@ -252,7 +237,7 @@
       <h2>Resultado do Concurso</h2>
       <p><strong>Candidato:</strong> ${nome}</p>
       <p><strong>Discord:</strong> ${discord}</p>
-      <p><strong>Nota:</strong> ${pontos}/20</p>
+      <p><strong>Nota:</strong> ${pontos}/${totalPerguntas}</p>
       <p><strong>Porcentagem de acerto:</strong> ${porcentagem}%</p>
       <p><strong>Chance de acerto/aprovação:</strong> ${chance}</p>
       <p class="${aprovado ? "aprovado" : "reprovado"}">
