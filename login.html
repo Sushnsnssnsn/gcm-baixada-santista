@@ -633,5 +633,45 @@ function gcmLogout(){
 document.addEventListener('DOMContentLoaded', renderUser);
 </script>
 
+
+<script id="controle-boletim-cargo">
+async function gcmMostrarBoletimPorCargo() {
+  const token = localStorage.getItem('gcm_token');
+
+  if (!token) {
+    document.querySelectorAll('.boletim-link').forEach(link => {
+      link.style.display = 'none';
+    });
+    return;
+  }
+
+  try {
+    const resposta = await fetch('https://backend-gcm-1.onrender.com/me', {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
+
+    const dados = await resposta.json();
+
+    if (dados.logged && dados.hasRole) {
+      document.querySelectorAll('.boletim-link').forEach(link => {
+        link.style.display = 'flex';
+      });
+    } else {
+      document.querySelectorAll('.boletim-link').forEach(link => {
+        link.style.display = 'none';
+      });
+    }
+  } catch (e) {
+    document.querySelectorAll('.boletim-link').forEach(link => {
+      link.style.display = 'none';
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', gcmMostrarBoletimPorCargo);
+</script>
+
 </body>
 </html>

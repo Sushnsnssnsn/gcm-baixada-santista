@@ -564,6 +564,7 @@ footer{
       <a class="" href="index.html">🏠 Início</a>
       <a class="active" href="painel.html">📊 Painel</a>
       <a class="" href="prisao.html">🚔 Prisões</a>
+      <a class="boletim-link" href="boletim.html" style="display:none;">📄 Boletim</a>
       <a class="" href="formulario.html">📝 Formulário</a>
       <a class="" href="termos.html">📄 Termos</a>
       <a class="" href="privacidade.html">🔒 Privacidade</a>
@@ -739,6 +740,46 @@ function gcmLogout(){
 }
 
 document.addEventListener('DOMContentLoaded', renderUser);
+</script>
+
+
+<script id="controle-boletim-cargo">
+async function gcmMostrarBoletimPorCargo() {
+  const token = localStorage.getItem('gcm_token');
+
+  if (!token) {
+    document.querySelectorAll('.boletim-link').forEach(link => {
+      link.style.display = 'none';
+    });
+    return;
+  }
+
+  try {
+    const resposta = await fetch('https://backend-gcm-1.onrender.com/me', {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
+
+    const dados = await resposta.json();
+
+    if (dados.logged && dados.hasRole) {
+      document.querySelectorAll('.boletim-link').forEach(link => {
+        link.style.display = 'flex';
+      });
+    } else {
+      document.querySelectorAll('.boletim-link').forEach(link => {
+        link.style.display = 'none';
+      });
+    }
+  } catch (e) {
+    document.querySelectorAll('.boletim-link').forEach(link => {
+      link.style.display = 'none';
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', gcmMostrarBoletimPorCargo);
 </script>
 
 </body>
