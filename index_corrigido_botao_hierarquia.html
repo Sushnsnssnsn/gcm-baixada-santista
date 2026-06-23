@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Portal GCM - Início</title><style>
+:root{--red:#8b1118;--red2:#b91c1c;--gold:#d6a84f;--gold2:#f7d37a;--dark:#141414;--text:#1f2937;--muted:#6b7280;--line:#ead5d5}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:"Segoe UI",Arial,sans-serif;background:#f4f4f5;color:var(--text);line-height:1.6}.govbar{background:#070707;color:#fff;font-size:.82rem;padding:8px 22px;display:flex;justify-content:space-between}.header{background:linear-gradient(135deg,var(--red),#5f0710);color:#fff;border-bottom:5px solid var(--gold);position:sticky;top:0;z-index:50;box-shadow:0 10px 30px #0004}.header-inner{max-width:1220px;margin:auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#3b050a;display:grid;place-items:center;font-weight:1000}.brand-title strong{display:block;font-size:1.15rem;text-transform:uppercase;letter-spacing:.6px}.brand-title span{color:#ffdede}.nav{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}.nav a{color:#fff;text-decoration:none;font-weight:800;font-size:.93rem;padding:9px 12px;border-radius:999px;transition:.22s}.nav a:hover,.nav a.active{background:#ffffff24;color:var(--gold2)}.user-box{display:flex;align-items:center;gap:8px;background:#0003;border:1px solid #fff3;padding:7px 10px;border-radius:999px}.user-box img{width:32px;height:32px;border-radius:50%;border:2px solid var(--gold2)}.user-box span{font-weight:800}.btn,.user-box a,.user-box button,button{border:0;border-radius:999px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#330409;padding:10px 16px;font-weight:900;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.22s}.btn:hover,.user-box a:hover,.user-box button:hover,button:hover{transform:translateY(-2px);filter:brightness(1.05)}.btn.secondary{background:#fff;color:var(--red);border:1px solid var(--line)}
+.hero{background:linear-gradient(90deg,#000b,#8b1118b8),radial-gradient(circle at top right,#f7d37a44,transparent 34%),linear-gradient(135deg,#2a070c,#6c0b13);color:#fff;min-height:430px;display:grid;align-items:center}.hero-inner{max-width:1220px;width:100%;margin:auto;padding:60px 22px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}.kicker{text-transform:uppercase;letter-spacing:2px;color:var(--gold2);font-weight:1000;margin-bottom:12px}.hero h1{font-size:clamp(2.4rem,5vw,4.3rem);line-height:1.04;margin-bottom:16px}.hero p{max-width:760px;color:#ffe7e7;font-size:1.12rem}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.hero-card{background:#ffffff20;border:1px solid #fff4;border-radius:24px;padding:24px;backdrop-filter:blur(8px);animation:floatCard 4s ease-in-out infinite}.hero-card h3{color:var(--gold2);font-size:1.4rem;margin-bottom:8px}.main{max-width:1220px;margin:auto;padding:34px 22px 54px}.section{margin-bottom:34px}.section h2{color:#2b090d;font-size:1.65rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}.section h2:after{content:"";display:block;width:70px;height:4px;background:var(--red);border-radius:999px;margin-top:7px}.lead{color:var(--muted);max-width:760px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.card,.service-card,.stat,.record,.member,.panel-option,.notice,.question{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 32px #1e0a0a14;transition:.25s;overflow:hidden}.card,.stat,.record,.member,.panel-option,.notice,.question{padding:22px}.card:hover,.service-card:hover,.stat:hover,.record:hover,.member:hover,.panel-option:hover,.notice:hover,.question:hover{transform:translateY(-5px);box-shadow:0 20px 44px #1e0a0a21}.service-card{text-decoration:none;color:inherit;min-height:200px;display:flex;flex-direction:column}.service-icon{height:82px;background:linear-gradient(135deg,var(--red),#5f0710);color:#fff;display:flex;align-items:center;padding:0 22px;font-size:2.2rem}.service-body{padding:22px}.service-body h3,.card h3,.record h3,.notice h3{color:var(--red);margin-bottom:8px}.service-body p,.card p,.record p,.notice p{color:#4b5563}.stat strong{display:block;color:var(--red);font-size:2.3rem;line-height:1}.stat span{color:var(--muted);font-weight:800}.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.principle{padding:20px;background:linear-gradient(180deg,#fff,#fff8f8);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:16px}.principle strong{color:var(--red);display:block}.member{border-left:5px solid var(--red)}.member strong{display:block}.member span{color:var(--muted);font-weight:800}.panel-list{display:grid;grid-template-columns:1fr;gap:16px;max-width:850px}.panel-option{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:18px;cursor:pointer}.panel-icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:#fff2f2;color:var(--red);font-size:2rem}.panel-option h3{color:var(--red)}.panel-option p{color:var(--muted)}.form-card{max-width:850px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}label{display:block;font-weight:800;margin:10px 0 6px}input,textarea,select{width:100%;padding:13px 14px;border:1px solid #d8caca;border-radius:12px;background:#fff;outline:none;font-size:1rem}textarea{min-height:110px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 3px #b91c1c1a}.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;padding:16px;border-radius:14px;margin-bottom:18px}.alert.erro{background:#fef2f2;border-color:#fecaca;color:#991b1b}.alert.ok{background:#f0fdf4;border-color:#bbf7d0;color:#166534}.hidden{display:none!important}.question{margin-bottom:14px}.question h3{color:#2b090d;margin-bottom:10px}.question label{color:#374151;font-weight:650;cursor:pointer}.step-panel{display:none}.step-panel.active{display:block;animation:fadeIn .32s ease both}.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}.progress div{background:#fff;border:1px solid var(--line);color:#6b7280;border-radius:14px;padding:10px;text-align:center;font-weight:900}.progress div.active{background:var(--red);color:#fff;border-color:var(--red)}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:18px}footer{background:#151515;color:#d1d5db;margin-top:46px}.footer-inner{max-width:1220px;margin:auto;padding:34px 22px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:22px}.footer-inner h3{color:#fff;margin-bottom:8px}.footer-bottom{border-top:1px solid #333;padding:14px 22px;text-align:center;color:#9ca3af}@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@media(max-width:900px){.header-inner{flex-direction:column;align-items:flex-start}.nav{justify-content:flex-start}.hero-inner{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.panel-option{grid-template-columns:56px 1fr}.panel-option .btn{grid-column:1/-1}}@media(max-width:620px){.govbar{flex-direction:column;gap:4px}.form-grid{grid-template-columns:1fr}.progress{grid-template-columns:1fr}.actions{flex-direction:column}.actions button,.actions a{width:100%}}
+
+
+/* AJUSTES FINAIS - SEM FUNDO BRANCO + BOTÃO HIERARQUIA */
+body{
+    background:#4a0408 !important;
+    color:#ffffff !important;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
+}
+
+.main,
+.section,
+.card,
+.record,
+.member,
+.notice,
+.question,
+.service-card,
+.stat,
+.principle,
+.form-card,
+.hero-card{
+    background:#8b1118 !important;
+    color:#ffffff !important;
+    border-color:#b91c1c !important;
+}
+
+.service-body,
+.service-body p,
+.card p,
+.record p,
+.notice p,
+.member span,
+.principle span,
+.lead,
+p,
+span,
+label,
+h1,h2,h3,h4,h5,h6,
+a,li,strong{
+    color:#ffffff !important;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
+}
+
+input,
+textarea,
+select{
+    background:#6e0c10 !important;
+    color:#ffffff !important;
+    border:1px solid #c53030 !important;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#ffffffaa !important;
+}
+
+/* BOTÃO PRINCIPAL "VER HIERARQUIA" NA TELA INICIAL */
+.hero-actions a[href="hierarquia.html"],
+.hero-actions .btn.secondary{
+    background:linear-gradient(135deg,#b91c1c,#7f1d1d) !important;
+    color:#ffffff !important;
+    border:1px solid #f7d37a !important;
+    box-shadow:0 10px 25px rgba(185,28,28,.35) !important;
+}
+
+/* HOVER DOS BOTÕES E LINKS */
+a,
+button,
+.nav a,
+.menu a,
+.btn{
+    transition:all .25s ease !important;
+}
+
+a:hover,
+button:hover,
+.nav a:hover,
+.menu a:hover,
+.btn:hover{
+    color:#ffd84a !important;
+    transform:scale(1.05) !important;
+    text-shadow:0 0 12px rgba(255,216,74,.45) !important;
+}
+</style></head><body><div class="govbar"><span>Portal Institucional GCM — Baixada Santista</span><span>Atendimento • Disciplina • Hierarquia</span></div><header class="header"><div class="header-inner"><div class="brand"><div class="logo">GCM</div><div class="brand-title"><strong>Guarda Civil Metropolitana</strong><span>Baixada Santista</span></div></div><nav class="nav"><a class="active" href="index.html">Início</a><a class="" href="geral.html">Geral</a><a class="" href="hierarquia.html">Hierarquia</a><a class="edital-recrutamento-link" href="edital.html">Edital</a><a class="edital-recrutamento-link" href="formulario.html">Recrutamento</a><a class="" href="painel.html">Painel</a><a class="" href="termos.html">Termos</a><span id="userBox" class="user-box"></span></nav></div></header><section class="hero"><div class="hero-inner"><div><div class="kicker">Portal Institucional</div><h1>Guarda Civil Metropolitana</h1><p>Portal profissional para acesso rápido às áreas gerais, hierarquia, edital de recrutamento e painel operacional restrito a membros autorizados.</p><div class="hero-actions"><a class="btn" href="geral.html">Acessar Geral</a><a class="btn secondary" href="hierarquia.html">Ver Hierarquia</a></div></div><div class="hero-card"><h3>Serviços ao membro</h3><p>Boletins, prisões, viaturas assumidas e recursos administrativos integrados ao login Discord.</p></div></div></section><main class="main"><section class="section"><h2>Acesso rápido</h2><p class="lead">Dois botões principais para navegação objetiva.</p><div class="grid"><a class="service-card" href="geral.html"><div class="service-icon">📌</div><div class="service-body"><h3>GERAL</h3><p>Veja prisões, boletins e quem está com a barca/viatura assumida.</p></div></a><a class="service-card" href="hierarquia.html"><div class="service-icon">👥</div><div class="service-body"><h3>Hierarquia</h3><p>Consulte a estrutura CMTG e ROMU da corporação.</p></div></a></div></section><section class="section"><h2>Princípios da GCM</h2><p class="lead">Base institucional da atuação operacional e administrativa.</p><div class="principles"><div class="principle"><strong>Disciplina</strong><span>Cumprir normas, procedimentos e orientações superiores.</span></div><div class="principle"><strong>Hierarquia</strong><span>Respeitar cargos, funções e responsabilidades.</span></div><div class="principle"><strong>Respeito</strong><span>Tratar população e membros com postura adequada.</span></div><div class="principle"><strong>Transparência</strong><span>Registrar ações com clareza e veracidade.</span></div><div class="principle"><strong>Eficiência</strong><span>Atuar de forma objetiva, preventiva e organizada.</span></div><div class="principle"><strong>Compromisso</strong><span>Representar a instituição com profissionalismo.</span></div></div></section></main><footer><div class="footer-inner"><div><h3>GCM Baixada Santista</h3><p>Portal institucional para organização, recrutamento, hierarquia e registros operacionais.</p></div><div><h3>Navegação</h3><p>Início • Geral • Hierarquia • Edital • Recrutamento • Painel</p></div><div><h3>Serviços</h3><p>Boletins, prisões, viaturas e controle por cargo Discord.</p></div></div><div class="footer-bottom">© 2026 Guarda Civil Metropolitana - Baixada Santista</div></footer>
+<script>
+const GCM_API='https://backend-gcm-1.onrender.com';
+const DISCORD_INVITE='https://discord.gg/YXnn9ZrBZe';
+function gcmToken(){return localStorage.getItem('gcm_token')}
+function gcmSaveTokenFromUrl(){const p=new URLSearchParams(location.search);const t=p.get('token');if(t){localStorage.setItem('gcm_token',t);p.delete('token');history.replaceState({},document.title,location.pathname+(p.toString()?'?'+p.toString():'')+location.hash)}}
+async function gcmMe(){const t=gcmToken();if(!t)return null;try{const r=await fetch(GCM_API+'/me',{headers:{Authorization:'Bearer '+t}});if(!r.ok){localStorage.removeItem('gcm_token');return null}return await r.json()}catch(e){return null}}
+function gcmAvatarUrl(u){return u&&u.avatar?`https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=128`:'https://cdn.discordapp.com/embed/avatars/0.png'}
+async function renderUser(){gcmSaveTokenFromUrl();const box=document.getElementById('userBox');if(!box)return;const d=await gcmMe();if(d&&d.logged){const n=d.user.global_name||d.user.username||'Usuário';box.innerHTML=`<img src="${gcmAvatarUrl(d.user)}"><span>${n}</span><a href="painel.html">Painel</a><button onclick="gcmLogout()">Sair</button>`}else{box.innerHTML=`<a href="login.html">Login</a><a href="painel.html">Painel</a>`}}
+function gcmLogout(){localStorage.removeItem('gcm_token');location.href='login.html'}
+async function temCargoAutorizado(){const d=await gcmMe();return !!(d&&d.logged&&d.hasRole)}
+document.addEventListener('DOMContentLoaded',renderUser);
+</script>
+
+<script id="controle-edital-recrutamento">
+async function controlarEditalRecrutamento() {
+  const data = await gcmMe();
+
+  const podeVerRecrutamento = !data || !data.logged || !data.hasRole;
+
+  document.querySelectorAll('.edital-recrutamento-link').forEach(link => {
+    link.style.display = podeVerRecrutamento ? '' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', controlarEditalRecrutamento);
+</script>
+
+</body></html>
