@@ -1,1063 +1,243 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recrutamento - GCM Baixada Santista</title>
-  <style>
-:root {
-  --bg:#07111f;
-  --panel:#0f2743;
-  --panel2:#123255;
-  --sidebar:#07182c;
-  --sidebar2:#0b2a4a;
-  --gold:#d4af37;
-  --gold2:#f3d46b;
-  --text:#f8fbff;
-  --muted:#b8cbe0;
-  --border:#244b70;
-  --blue:#38bdf8;
-  --green:#34d399;
-  --red:#fb7185;
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Recrutamento - GCM</title><style>
+:root{--red:#8b1118;--red2:#b91c1c;--gold:#d6a84f;--gold2:#f7d37a;--dark:#141414;--text:#1f2937;--muted:#6b7280;--line:#ead5d5}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:"Segoe UI",Arial,sans-serif;background:#f4f4f5;color:var(--text);line-height:1.6}.govbar{background:#070707;color:#fff;font-size:.82rem;padding:8px 22px;display:flex;justify-content:space-between}.header{background:linear-gradient(135deg,var(--red),#5f0710);color:#fff;border-bottom:5px solid var(--gold);position:sticky;top:0;z-index:50;box-shadow:0 10px 30px #0004}.header-inner{max-width:1220px;margin:auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{display:flex;align-items:center;gap:14px}.logo{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#3b050a;display:grid;place-items:center;font-weight:1000}.brand-title strong{display:block;font-size:1.15rem;text-transform:uppercase;letter-spacing:.6px}.brand-title span{color:#ffdede}.nav{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}.nav a{color:#fff;text-decoration:none;font-weight:800;font-size:.93rem;padding:9px 12px;border-radius:999px;transition:.22s}.nav a:hover,.nav a.active{background:#ffffff24;color:var(--gold2)}.user-box{display:flex;align-items:center;gap:8px;background:#0003;border:1px solid #fff3;padding:7px 10px;border-radius:999px}.user-box img{width:32px;height:32px;border-radius:50%;border:2px solid var(--gold2)}.user-box span{font-weight:800}.btn,.user-box a,.user-box button,button{border:0;border-radius:999px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#330409;padding:10px 16px;font-weight:900;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.22s}.btn:hover,.user-box a:hover,.user-box button:hover,button:hover{transform:translateY(-2px);filter:brightness(1.05)}.btn.secondary{background:#fff;color:var(--red);border:1px solid var(--line)}
+.hero{background:linear-gradient(90deg,#000b,#8b1118b8),radial-gradient(circle at top right,#f7d37a44,transparent 34%),linear-gradient(135deg,#2a070c,#6c0b13);color:#fff;min-height:430px;display:grid;align-items:center}.hero-inner{max-width:1220px;width:100%;margin:auto;padding:60px 22px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}.kicker{text-transform:uppercase;letter-spacing:2px;color:var(--gold2);font-weight:1000;margin-bottom:12px}.hero h1{font-size:clamp(2.4rem,5vw,4.3rem);line-height:1.04;margin-bottom:16px}.hero p{max-width:760px;color:#ffe7e7;font-size:1.12rem}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.hero-card{background:#ffffff20;border:1px solid #fff4;border-radius:24px;padding:24px;backdrop-filter:blur(8px);animation:floatCard 4s ease-in-out infinite}.hero-card h3{color:var(--gold2);font-size:1.4rem;margin-bottom:8px}.main{max-width:1220px;margin:auto;padding:34px 22px 54px}.section{margin-bottom:34px}.section h2{color:#2b090d;font-size:1.65rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}.section h2:after{content:"";display:block;width:70px;height:4px;background:var(--red);border-radius:999px;margin-top:7px}.lead{color:var(--muted);max-width:760px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.card,.service-card,.stat,.record,.member,.panel-option,.notice,.question{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 32px #1e0a0a14;transition:.25s;overflow:hidden}.card,.stat,.record,.member,.panel-option,.notice,.question{padding:22px}.card:hover,.service-card:hover,.stat:hover,.record:hover,.member:hover,.panel-option:hover,.notice:hover,.question:hover{transform:translateY(-5px);box-shadow:0 20px 44px #1e0a0a21}.service-card{text-decoration:none;color:inherit;min-height:200px;display:flex;flex-direction:column}.service-icon{height:82px;background:linear-gradient(135deg,var(--red),#5f0710);color:#fff;display:flex;align-items:center;padding:0 22px;font-size:2.2rem}.service-body{padding:22px}.service-body h3,.card h3,.record h3,.notice h3{color:var(--red);margin-bottom:8px}.service-body p,.card p,.record p,.notice p{color:#4b5563}.stat strong{display:block;color:var(--red);font-size:2.3rem;line-height:1}.stat span{color:var(--muted);font-weight:800}.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.principle{padding:20px;background:linear-gradient(180deg,#fff,#fff8f8);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:16px}.principle strong{color:var(--red);display:block}.member{border-left:5px solid var(--red)}.member strong{display:block}.member span{color:var(--muted);font-weight:800}.panel-list{display:grid;grid-template-columns:1fr;gap:16px;max-width:850px}.panel-option{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:18px;cursor:pointer}.panel-icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:#fff2f2;color:var(--red);font-size:2rem}.panel-option h3{color:var(--red)}.panel-option p{color:var(--muted)}.form-card{max-width:850px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}label{display:block;font-weight:800;margin:10px 0 6px}input,textarea,select{width:100%;padding:13px 14px;border:1px solid #d8caca;border-radius:12px;background:#fff;outline:none;font-size:1rem}textarea{min-height:110px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 3px #b91c1c1a}.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;padding:16px;border-radius:14px;margin-bottom:18px}.alert.erro{background:#fef2f2;border-color:#fecaca;color:#991b1b}.alert.ok{background:#f0fdf4;border-color:#bbf7d0;color:#166534}.hidden{display:none!important}.question{margin-bottom:14px}.question h3{color:#2b090d;margin-bottom:10px}.question label{color:#374151;font-weight:650;cursor:pointer}.step-panel{display:none}.step-panel.active{display:block;animation:fadeIn .32s ease both}.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}.progress div{background:#fff;border:1px solid var(--line);color:#6b7280;border-radius:14px;padding:10px;text-align:center;font-weight:900}.progress div.active{background:var(--red);color:#fff;border-color:var(--red)}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:18px}footer{background:#151515;color:#d1d5db;margin-top:46px}.footer-inner{max-width:1220px;margin:auto;padding:34px 22px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:22px}.footer-inner h3{color:#fff;margin-bottom:8px}.footer-bottom{border-top:1px solid #333;padding:14px 22px;text-align:center;color:#9ca3af}@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@media(max-width:900px){.header-inner{flex-direction:column;align-items:flex-start}.nav{justify-content:flex-start}.hero-inner{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.panel-option{grid-template-columns:56px 1fr}.panel-option .btn{grid-column:1/-1}}@media(max-width:620px){.govbar{flex-direction:column;gap:4px}.form-grid{grid-template-columns:1fr}.progress{grid-template-columns:1fr}.actions{flex-direction:column}.actions button,.actions a{width:100%}}
+
+body,p,span,label,h1,h2,h3,h4,h5,h6,a,li,strong,
+.card,.record,.member,.notice,.question,.service-body,.principle{
+ color:#ffffff !important;
+}
+input,textarea,select{
+ color:#ffffff !important;
+}
+input::placeholder,textarea::placeholder{
+ color:#ffdede !important;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
 
-body {
-  font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 34%),
-    radial-gradient(circle at bottom right,rgba(212,175,55,.12),transparent 38%),
-    linear-gradient(135deg,#061426,#09213d 48%,#061426);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
+body,p,span,label,h1,h2,h3,h4,h5,h6,a,li,strong{
+    color:#ffffff !important;
+}
+input,textarea,select{
+    color:#ffffff !important;
+}
+input::placeholder,
+textarea::placeholder{
+    color:#ffffffaa !important;
 }
 
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:44px 44px;
-  pointer-events:none;
-  z-index:-1;
-  animation:gridMove 22s linear infinite;
+
+/* LETRAS BRANCAS + FONTE NOVA + HOVER AMARELO */
+body,
+p,
+span,
+label,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li,
+strong,
+button {
+    font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif !important;
+    color: #ffffff !important;
 }
 
-.app {
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:250px 1fr;
-}
-
-.sidebar {
-  position:sticky;
-  top:0;
-  height:100vh;
-  background:linear-gradient(180deg,var(--sidebar),var(--sidebar2));
-  border-right:1px solid rgba(56,189,248,.18);
-  padding:22px 18px;
-  z-index:50;
-  box-shadow:18px 0 48px rgba(0,0,0,.28);
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:26px;
-  padding:8px 8px 18px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.logo {
-  width:46px;
-  height:46px;
-  min-width:46px;
-  border-radius:15px;
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  display:grid;
-  place-items:center;
-  color:#061426;
-  font-weight:900;
-}
-
-.brand h1 {
-  font-size:.95rem;
-  line-height:1.18;
-  color:#fff;
-  text-transform:uppercase;
-}
-
-.brand span {
-  display:block;
-  color:#bfdbfe;
-  font-size:.76rem;
-}
-
-.menu {
-  display:flex;
-  flex-direction:column;
-  gap:11px;
-  padding:4px;
-}
-
-.menu a {
-  color:#eaf6ff;
-  text-decoration:none;
-  padding:10px 12px;
-  border-radius:14px;
-  font-weight:800;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  transition:.25s;
-  border:1px solid rgba(255,255,255,.06);
-  background:rgba(255,255,255,.035);
-}
-
-.menu a:hover,
-.menu a.active {
-  background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(212,175,55,.10));
-  border-color:rgba(56,189,248,.35);
-  color:var(--gold2);
-  transform:translateX(6px);
-}
-
-.sidebar-footer {
-  position:absolute;
-  left:18px;
-  right:18px;
-  bottom:22px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:18px;
-  padding:15px;
-  color:#d7edff;
-  font-size:.9rem;
-}
-
-.main { min-width:0; }
-
-.topbar {
-  position:sticky;
-  top:0;
-  z-index:40;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-  padding:18px 34px;
-  background:rgba(6,20,38,.78);
-  border-bottom:1px solid rgba(56,189,248,.18);
-  backdrop-filter:blur(16px);
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
-}
-
-.page-title strong {
-  color:#fff;
-  display:block;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-}
-
-.page-title span {
-  color:var(--muted);
-  font-size:.92rem;
-}
-
-.user-box {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:rgba(15,39,67,.94);
-  border:1px solid rgba(56,189,248,.25);
-  border-radius:999px;
-  padding:8px 12px;
-}
-
-.user-box img {
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:2px solid var(--blue);
-}
-
-.user-box span { font-weight:800; color:#fff; }
-
-.user-box a,
-.user-box button,
-button,
-.btn {
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#07182c;
-  border:0;
-  padding:10px 14px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:900;
-  cursor:pointer;
-  display:inline-block;
-  transition:.25s;
-}
-
-button:hover,
-.btn:hover {
-  transform:translateY(-3px);
-  filter:brightness(1.08);
-}
-
-button:disabled {
-  opacity:.45;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.hero-recrutamento {
-  margin:34px;
-  border:1px solid rgba(56,189,248,.22);
-  border-radius:30px;
-  padding:42px;
-  background:
-    linear-gradient(135deg,rgba(10,38,68,.94),rgba(6,20,38,.96)),
-    radial-gradient(circle at top right,rgba(56,189,248,.17),transparent 42%);
-  box-shadow:0 30px 75px rgba(0,0,0,.35);
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-recrutamento::after {
-  content:"";
-  position:absolute;
-  width:420px;
-  height:420px;
-  border-radius:50%;
-  background:rgba(212,175,55,.10);
-  top:-190px;
-  right:-120px;
-  animation:pulse 4.5s infinite alternate;
-}
-
-.hero-inner {
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:1.4fr .8fr;
-  gap:24px;
-  align-items:center;
-}
-
-.kicker {
-  color:var(--blue);
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  margin-bottom:10px;
-}
-
-.hero-recrutamento h2 {
-  font-size:clamp(2rem,5vw,3.6rem);
-  line-height:1.05;
-  margin-bottom:14px;
-}
-
-.hero-recrutamento p {
-  color:#dbeafe;
-  font-size:1.05rem;
-}
-
-.recruit-card {
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:22px;
-  padding:22px;
-}
-
-.recruit-card strong {
-  display:block;
-  font-size:2.1rem;
-  color:var(--gold2);
-}
-
-.recruit-card span {
-  color:var(--muted);
-  font-weight:800;
-}
-
-.content {
-  padding:0 34px 42px;
-}
-
-.progress-card {
-  background:linear-gradient(135deg,rgba(15,39,67,.96),rgba(12,49,82,.88));
-  border:1px solid rgba(56,189,248,.18);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 18px 38px rgba(0,0,0,.25);
-  margin-bottom:18px;
-}
-
-.steps-line {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.step-item {
-  padding:12px;
-  border-radius:16px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-  color:var(--muted);
-  font-weight:900;
-  text-align:center;
-  transition:.25s;
-}
-
-.step-item.active {
-  background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(212,175,55,.12));
-  color:#fff;
-  border-color:rgba(212,175,55,.40);
-  transform:translateY(-2px);
-}
-
-.progress-bar {
-  height:12px;
-  background:rgba(255,255,255,.08);
-  border-radius:999px;
-  overflow:hidden;
-}
-
-.progress-fill {
-  width:25%;
-  height:100%;
-  background:linear-gradient(135deg,var(--blue),var(--gold));
-  border-radius:999px;
-  transition:.45s ease;
-}
-
-.step-panel {
-  display:none;
-  opacity:0;
-  transform:translateX(20px);
-  transition:.35s ease;
-}
-
-.step-panel.active {
-  display:block;
-  animation:stepIn .38s ease both;
-}
-
-.aviso {
-  background:rgba(212,175,55,.12);
-  border:1px solid rgba(212,175,55,.35);
-  color:#fde68a;
-  padding:18px;
-  border-radius:18px;
-  margin-bottom:18px;
-}
-
-section,
-.question,
-#resultado {
-  background:linear-gradient(135deg,rgba(15,39,67,.96),rgba(12,49,82,.88));
-  border:1px solid rgba(56,189,248,.18);
-  border-radius:22px;
-  padding:22px;
-  margin-bottom:18px;
-  box-shadow:0 18px 38px rgba(0,0,0,.25);
-}
-
-section h2,
-.question h3,
-#resultado h2 {
-  color:var(--gold2);
-  margin-bottom:12px;
-}
-
-label {
-  display:block;
-  margin:10px 0 6px;
-  color:#eaf6ff;
-  font-weight:700;
-}
-
-input[type=text],
-input[type=number],
-textarea {
-  width:100%;
-  padding:13px 14px;
-  border-radius:12px;
-  border:1px solid rgba(56,189,248,.25);
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  outline:none;
-  font-size:1rem;
-}
-
-textarea {
-  min-height:120px;
-  resize:vertical;
+input,
+textarea,
+select {
+    font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif !important;
+    color: #ffffff !important;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color:#9fb8cc;
+    color: #ffffffaa !important;
 }
 
-input[type=radio] {
-  margin-right:8px;
+a,
+button,
+.menu a,
+.nav a,
+.card h3,
+.record h3,
+.notice h3,
+.member strong,
+.service-body h3,
+.principle strong {
+    transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease !important;
 }
 
-.question {
-  transition:.25s;
+a:hover,
+button:hover,
+.menu a:hover,
+.nav a:hover,
+.card:hover h3,
+.record:hover h3,
+.notice:hover h3,
+.member:hover strong,
+.service-card:hover h3,
+.principle:hover strong {
+    color: #ffd84a !important;
+    transform: scale(1.06) !important;
+    text-shadow: 0 0 12px rgba(255, 216, 74, 0.45) !important;
 }
 
-.question:hover {
-  transform:translateY(-3px);
-  border-color:rgba(212,175,55,.35);
+
+/* APENAS LETRAS BRANCAS + HOVER */
+body,p,span,label,h1,h2,h3,h4,h5,h6,a,li,strong{
+    color:#ffffff !important;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
 }
 
-.actions {
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:18px;
+a,button,.nav a,.menu a{
+    transition:all .25s ease !important;
 }
 
-.btn-secondary {
-  background:rgba(255,255,255,.08);
-  color:#e0f2fe;
-  border:1px solid rgba(56,189,248,.28);
+a:hover,
+button:hover,
+.nav a:hover,
+.menu a:hover{
+    color:#ffd84a !important;
+    transform:scale(1.05) !important;
 }
 
-#resultado {
-  display:none;
+
+/* CORREÇÃO FINAL: FUNDO VERMELHO + LETRAS BRANCAS */
+body{
+    background:#4a0408 !important;
+    color:#ffffff !important;
 }
 
-.aprovado {
-  color:#86efac;
-  font-weight:900;
+.main,
+.section,
+.card,
+.record,
+.member,
+.notice,
+.question,
+.service-card,
+.stat,
+.principle,
+.form-card,
+.login-card{
+    background:#8b1118 !important;
+    color:#ffffff !important;
+    border-color:#b91c1c !important;
 }
 
-.reprovado {
-  color:#fecaca;
-  font-weight:900;
+.service-body,
+.service-body p,
+.card p,
+.record p,
+.notice p,
+.member span,
+.principle span,
+.lead,
+p,
+span,
+label,
+h1,h2,h3,h4,h5,h6,
+a,li,strong{
+    color:#ffffff !important;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
 }
 
-footer {
-  text-align:center;
-  color:var(--muted);
-  border-top:1px solid rgba(56,189,248,.16);
-  padding:26px;
-  margin-top:24px;
+input,
+textarea,
+select{
+    background:#6e0c10 !important;
+    color:#ffffff !important;
+    border:1px solid #c53030 !important;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif !important;
 }
 
-@keyframes stepIn {
-  from { opacity:0; transform:translateX(26px); }
-  to { opacity:1; transform:translateX(0); }
+input::placeholder,
+textarea::placeholder{
+    color:#ffffffaa !important;
 }
 
-@keyframes pulse {
-  from { transform:scale(1); opacity:.55; }
-  to { transform:scale(1.18); opacity:1; }
+a,
+button,
+.nav a,
+.menu a{
+    transition:all .25s ease !important;
 }
 
-@keyframes gridMove {
-  from { background-position:0 0; }
-  to { background-position:44px 44px; }
+a:hover,
+button:hover,
+.nav a:hover,
+.menu a:hover{
+    color:#ffd84a !important;
+    transform:scale(1.05) !important;
 }
 
-@media(max-width:960px){
-  .app{grid-template-columns:1fr}
-  .sidebar{position:relative;height:auto}
-  .sidebar-footer{position:relative;left:auto;right:auto;bottom:auto;margin-top:20px}
-  .hero-inner{grid-template-columns:1fr}
-}
-
-@media(max-width:620px){
-  .topbar{flex-direction:column;align-items:flex-start;padding:16px}
-  .hero-recrutamento{margin:16px;padding:26px}
-  .content{padding:0 16px 30px}
-  .user-box{flex-wrap:wrap;border-radius:18px}
-  .steps-line{grid-template-columns:1fr}
-  .actions{flex-direction:column}
-  .actions button{width:100%}
-}
-  </style>
-</head>
-
-<body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="logo">GCM</div>
-      <h1>Guarda Civil Metropolitana <span>Baixada Santista</span></h1>
-    </div>
-
-    <nav class="menu">
-      <a class="" href="index.html">🏠 Início</a>
-      <a class="" href="painel.html">📊 Painel</a>
-      <a class="" href="prisao.html">🚔 Prisões</a>
-      <a class="boletim-link" href="boletim.html" style="display:none;">📄 Boletim</a>
-      <a class="active" href="formulario.html">📝 Recrutamento</a>
-      <a class="" href="termos.html">📄 Termos</a>
-      <a class="" href="privacidade.html">🔒 Privacidade</a>
-    </nav>
-
-    <div class="sidebar-footer">
-      <strong>Recrutamento</strong><br>
-      Processo seletivo em etapas.
-    </div>
-  </aside>
-
-  <main class="main">
-    <div class="topbar">
-      <div class="page-title">
-        <strong>Guarda Civil Metropolitana - Baixada Santista</strong>
-        <span>Portal de recrutamento e seleção</span>
-      </div>
-      <div class="user-box" id="userBox"></div>
-    </div>
-
-    <section class="hero-recrutamento">
-      <div class="hero-inner">
-        <div>
-          <div class="kicker">Processo Seletivo</div>
-          <h2>Recrutamento GCM</h2>
-          <p>Preencha o formulário por etapas, com transições e progresso automático até o resultado final.</p>
-        </div>
-
-        <div class="recruit-card">
-          <strong>16/20</strong>
-          <span>Nota mínima para aprovação</span>
-          <p style="margin-top:12px;color:#dbeafe;">O resultado é calculado e enviado automaticamente para análise.</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="content">
-      <div class="progress-card">
-        <div class="steps-line">
-          <div class="step-item active" data-step-indicator="0">1. Dados</div>
-          <div class="step-item" data-step-indicator="1">2. Prova I</div>
-          <div class="step-item" data-step-indicator="2">3. Prova II</div>
-          <div class="step-item" data-step-indicator="3">4. Resultado</div>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-      </div>
-
-      <div class="aviso">
-        Para ser aprovado no concurso, o candidato precisa acertar no mínimo <strong>16 de 20 perguntas</strong>.
-      </div>
-
-      <form id="prova">
-        <div class="step-panel active" data-step="0">
-          <section>
-    <h2>Dados do Candidato</h2>
-    <label>Nome completo</label>
-    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
-
-    <label>ID ou nome no Discord</label>
-    <input type="text" id="discord" placeholder="Ex: Juan#0000 ou @usuario" required>
-
-    <label>Idade</label>
-    <input type="number" id="idade" placeholder="Digite sua idade" required>
-
-    <label>Por que você quer entrar na GCM?</label>
-    <textarea id="motivo" placeholder="Explique seu interesse em entrar na GCM"></textarea>
-  </section>
-          <div class="actions">
-            <span></span>
-            <button type="button" onclick="proximaEtapa()">Avançar</button>
-          </div>
-        </div>
-
-        <div class="step-panel" data-step="1">
-          <section>
-            <h2>Prova Objetiva - Parte 1</h2>
-            <p class="lead">Responda as perguntas de 1 a 10.</p>
-          </section>
-          <div class="question">
-      <h3>1. Qual é a principal função da GCM?</h3>
-      <label><input type="radio" name="q1" value="a"> Atuar de forma preventiva na segurança urbana</label>
-      <label><input type="radio" name="q1" value="b"> Criar leis municipais</label>
-      <label><input type="radio" name="q1" value="c"> Substituir o Poder Judiciário</label>
-    </div>
-<div class="question">
-      <h3>2. O que significa hierarquia dentro da corporação?</h3>
-      <label><input type="radio" name="q2" value="a"> Organização por cargos, funções e responsabilidades</label>
-      <label><input type="radio" name="q2" value="b"> Todos fazem o que quiserem</label>
-      <label><input type="radio" name="q2" value="c"> Ausência de comando</label>
-    </div>
-<div class="question">
-      <h3>3. Durante uma abordagem, o agente deve agir com:</h3>
-      <label><input type="radio" name="q3" value="a"> Calma, técnica e respeito</label>
-      <label><input type="radio" name="q3" value="b"> Agressividade sem necessidade</label>
-      <label><input type="radio" name="q3" value="c"> Deboche e provocação</label>
-    </div>
-<div class="question">
-      <h3>4. Um relatório de ocorrência deve conter:</h3>
-      <label><input type="radio" name="q4" value="a"> Dados claros, local, horário, envolvidos e descrição dos fatos</label>
-      <label><input type="radio" name="q4" value="b"> Apenas opinião pessoal</label>
-      <label><input type="radio" name="q4" value="c"> Informações inventadas</label>
-    </div>
-<div class="question">
-      <h3>5. O respeito à população é importante porque:</h3>
-      <label><input type="radio" name="q5" value="a"> Fortalece a confiança entre guarda e cidadão</label>
-      <label><input type="radio" name="q5" value="b"> Diminui a responsabilidade do agente</label>
-      <label><input type="radio" name="q5" value="c"> Permite abuso de autoridade</label>
-    </div>
-<div class="question">
-      <h3>6. O uso adequado dos canais da GCM significa:</h3>
-      <label><input type="radio" name="q6" value="a"> Usar cada canal para sua finalidade correta</label>
-      <label><input type="radio" name="q6" value="b"> Fazer spam em todos os canais</label>
-      <label><input type="radio" name="q6" value="c"> Mandar mensagens fora do tema sempre que quiser</label>
-    </div>
-<div class="question">
-      <h3>7. Em caso de dúvida durante o serviço, o agente deve:</h3>
-      <label><input type="radio" name="q7" value="a"> Procurar orientação de um superior</label>
-      <label><input type="radio" name="q7" value="b"> Ignorar a situação</label>
-      <label><input type="radio" name="q7" value="c"> Criar uma regra própria</label>
-    </div>
-<div class="question">
-      <h3>8. Disciplina dentro da GCM significa:</h3>
-      <label><input type="radio" name="q8" value="a"> Cumprir regras, ordens legais e procedimentos</label>
-      <label><input type="radio" name="q8" value="b"> Desrespeitar superiores</label>
-      <label><input type="radio" name="q8" value="c"> Agir sem responsabilidade</label>
-    </div>
-<div class="question">
-      <h3>9. Se um membro descumprir as regras, ele pode receber:</h3>
-      <label><input type="radio" name="q9" value="a"> Medida disciplinar conforme a gravidade</label>
-      <label><input type="radio" name="q9" value="b"> Promoção automática</label>
-      <label><input type="radio" name="q9" value="c"> Isenção de todas as regras</label>
-    </div>
-<div class="question">
-      <h3>10. Qual atitude representa profissionalismo?</h3>
-      <label><input type="radio" name="q10" value="a"> Respeitar regras, colegas, superiores e cidadãos</label>
-      <label><input type="radio" name="q10" value="b"> Ofender candidatos e membros</label>
-      <label><input type="radio" name="q10" value="c"> Divulgar informações internas sem autorização</label>
-    </div>
-          <div class="actions">
-            <button type="button" class="btn-secondary" onclick="voltarEtapa()">Voltar</button>
-            <button type="button" onclick="proximaEtapa()">Avançar</button>
-          </div>
-        </div>
-
-        <div class="step-panel" data-step="2">
-          <section>
-            <h2>Prova Objetiva - Parte 2</h2>
-            <p class="lead">Responda as perguntas de 11 a 20.</p>
-          </section>
-          <div class="question">
-      <h3>11. Qual deve ser a postura do agente diante de uma ordem legal de um superior?</h3>
-      <label><input type="radio" name="q11" value="a"> Cumprir a ordem com disciplina e responsabilidade</label>
-      <label><input type="radio" name="q11" value="b"> Ignorar a ordem sem justificativa</label>
-      <label><input type="radio" name="q11" value="c"> Discutir publicamente com o superior</label>
-    </div>
-<div class="question">
-      <h3>12. Em uma ocorrência, qual informação é importante registrar?</h3>
-      <label><input type="radio" name="q12" value="a"> Local, horário, envolvidos e descrição dos fatos</label>
-      <label><input type="radio" name="q12" value="b"> Apenas o nome do agente</label>
-      <label><input type="radio" name="q12" value="c"> Informações inventadas</label>
-    </div>
-<div class="question">
-      <h3>13. O que o agente deve evitar durante o serviço?</h3>
-      <label><input type="radio" name="q13" value="a"> Abuso de autoridade e ofensas</label>
-      <label><input type="radio" name="q13" value="b"> Respeitar a população</label>
-      <label><input type="radio" name="q13" value="c"> Cumprir regras</label>
-    </div>
-<div class="question">
-      <h3>14. Qual atitude é correta ao presenciar uma infração disciplinar?</h3>
-      <label><input type="radio" name="q14" value="a"> Informar ao superior responsável</label>
-      <label><input type="radio" name="q14" value="b"> Participar da infração</label>
-      <label><input type="radio" name="q14" value="c"> Ignorar sempre</label>
-    </div>
-<div class="question">
-      <h3>15. O que representa comunicação profissional?</h3>
-      <label><input type="radio" name="q15" value="a"> Clareza e respeito</label>
-      <label><input type="radio" name="q15" value="b"> Xingamentos</label>
-      <label><input type="radio" name="q15" value="c"> Deboche</label>
-    </div>
-<div class="question">
-      <h3>16. O agente deve preservar informações internas?</h3>
-      <label><input type="radio" name="q16" value="a"> Sim, quando forem restritas</label>
-      <label><input type="radio" name="q16" value="b"> Não</label>
-      <label><input type="radio" name="q16" value="c"> Apenas às vezes</label>
-    </div>
-<div class="question">
-      <h3>17. O trabalho em equipe é importante porque:</h3>
-      <label><input type="radio" name="q17" value="a"> Melhora a eficiência do serviço</label>
-      <label><input type="radio" name="q17" value="b"> Atrapalha o serviço</label>
-      <label><input type="radio" name="q17" value="c"> Não faz diferença</label>
-    </div>
-<div class="question">
-      <h3>18. Qual comportamento demonstra ética?</h3>
-      <label><input type="radio" name="q18" value="a"> Honestidade e responsabilidade</label>
-      <label><input type="radio" name="q18" value="b"> Mentir em relatórios</label>
-      <label><input type="radio" name="q18" value="c"> Favorecimentos indevidos</label>
-    </div>
-<div class="question">
-      <h3>19. Em patrulhamento, o agente deve:</h3>
-      <label><input type="radio" name="q19" value="a"> Manter atenção constante</label>
-      <label><input type="radio" name="q19" value="b"> Distração total</label>
-      <label><input type="radio" name="q19" value="c"> Ignorar ocorrências</label>
-    </div>
-<div class="question">
-      <h3>20. Qual valor é essencial para a GCM?</h3>
-      <label><input type="radio" name="q20" value="a"> Disciplina e respeito</label>
-      <label><input type="radio" name="q20" value="b"> Desorganização</label>
-      <label><input type="radio" name="q20" value="c"> Indisciplina</label>
-    </div>
-          <div class="actions">
-            <button type="button" class="btn-secondary" onclick="voltarEtapa()">Voltar</button>
-            <button type="button" onclick="proximaEtapa()">Ver Resultado</button>
-          </div>
-        </div>
-
-        <div class="step-panel" data-step="3">
-          <section>
-            <h2>Finalização</h2>
-            <p class="lead">Confira seu resultado e envie o formulário.</p>
-          </section>
-
-          <div id="resultado"></div>
-
-          <div class="actions">
-            <button type="button" class="btn-secondary" onclick="voltarEtapa()">Voltar</button>
-            <button type="submit">Enviar Formulário</button>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <footer>
-      <p>© 2026 Guarda Civil Metropolitana - Baixada Santista</p>
-      <p>Portal de Recrutamento</p>
-    </footer>
-  </main>
-</div>
-
+</style></head><body><div class="govbar"><span>Portal Institucional GCM — Baixada Santista</span><span>Atendimento • Disciplina • Hierarquia</span></div><header class="header"><div class="header-inner"><div class="brand"><div class="logo">GCM</div><div class="brand-title"><strong>Guarda Civil Metropolitana</strong><span>Baixada Santista</span></div></div><nav class="nav"><a class="" href="index.html">Início</a><a class="" href="geral.html">Geral</a><a class="" href="hierarquia.html">Hierarquia</a><a class="edital-recrutamento-link" href="edital.html">Edital</a><a class="active edital-recrutamento-link" href="formulario.html">Recrutamento</a><a class="" href="painel.html">Painel</a><a class="" href="termos.html">Termos</a><span id="userBox" class="user-box"></span></nav></div></header><main class="main"><section class="section"><h2>Recrutamento GCM</h2><p class="lead">Formulário em etapas. A cada 10 perguntas, a tela muda.</p><div class="progress"><div class="active" data-step-i="0">Dados</div><div data-step-i="1">Perguntas 1-10</div><div data-step-i="2">Perguntas 11-20</div><div data-step-i="3">Resultado</div></div><form id="prova" class="card form-card"><div class="step-panel active" data-step="0"><h3>Dados do Candidato</h3><div class="form-grid"><div><label>Nome completo</label><input id="nome" required></div><div><label>Discord</label><input id="discord" required></div><div><label>Idade</label><input id="idade" type="number" required></div><div><label>ID na cidade</label><input id="idCidade"></div></div><label>Motivo</label><textarea id="motivo"></textarea><div class="actions"><a class="btn secondary" href="edital.html">Ver edital</a><button type="button" onclick="proxima()">Avançar</button></div></div><div class="step-panel" data-step="1"><h3>Prova objetiva — 1 a 10</h3><div class="question"><h3>1. Qual é a principal função da GCM?</h3><label><input type="radio" name="q1" value="1"> Atuar de forma preventiva na segurança urbana</label><label><input type="radio" name="q1" value="0"> Criar leis municipais</label><label><input type="radio" name="q1" value="0"> Substituir o Poder Judiciário</label></div><div class="question"><h3>2. O que significa hierarquia dentro da corporação?</h3><label><input type="radio" name="q2" value="0"> Todos fazem o que quiserem</label><label><input type="radio" name="q2" value="1"> Organização por cargos, funções e responsabilidades</label><label><input type="radio" name="q2" value="0"> Ausência de comando</label></div><div class="question"><h3>3. Durante uma abordagem, o agente deve agir com:</h3><label><input type="radio" name="q3" value="0"> Agressividade sem necessidade</label><label><input type="radio" name="q3" value="0"> Deboche e provocação</label><label><input type="radio" name="q3" value="1"> Calma, técnica e respeito</label></div><div class="question"><h3>4. Um relatório de ocorrência deve conter:</h3><label><input type="radio" name="q4" value="0"> Apenas opinião pessoal</label><label><input type="radio" name="q4" value="1"> Dados claros, local, horário, envolvidos e descrição dos fatos</label><label><input type="radio" name="q4" value="0"> Informações inventadas</label></div><div class="question"><h3>5. O respeito à população é importante porque:</h3><label><input type="radio" name="q5" value="1"> Fortalece a confiança entre guarda e cidadão</label><label><input type="radio" name="q5" value="0"> Diminui a responsabilidade do agente</label><label><input type="radio" name="q5" value="0"> Permite abuso de autoridade</label></div><div class="question"><h3>6. O uso adequado dos canais da GCM significa:</h3><label><input type="radio" name="q6" value="0"> Fazer spam em todos os canais</label><label><input type="radio" name="q6" value="1"> Usar cada canal para sua finalidade correta</label><label><input type="radio" name="q6" value="0"> Mandar mensagens fora do tema sempre que quiser</label></div><div class="question"><h3>7. Em caso de dúvida durante o serviço, o agente deve:</h3><label><input type="radio" name="q7" value="0"> Ignorar a situação</label><label><input type="radio" name="q7" value="0"> Criar uma regra própria</label><label><input type="radio" name="q7" value="1"> Procurar orientação de um superior</label></div><div class="question"><h3>8. Disciplina dentro da GCM significa:</h3><label><input type="radio" name="q8" value="1"> Cumprir regras, ordens legais e procedimentos</label><label><input type="radio" name="q8" value="0"> Desrespeitar superiores</label><label><input type="radio" name="q8" value="0"> Agir sem responsabilidade</label></div><div class="question"><h3>9. Se um membro descumprir as regras, ele pode receber:</h3><label><input type="radio" name="q9" value="0"> Promoção automática</label><label><input type="radio" name="q9" value="1"> Medida disciplinar conforme a gravidade</label><label><input type="radio" name="q9" value="0"> Isenção de todas as regras</label></div><div class="question"><h3>10. Qual atitude representa profissionalismo?</h3><label><input type="radio" name="q10" value="0"> Ofender candidatos e membros</label><label><input type="radio" name="q10" value="0"> Divulgar informações internas sem autorização</label><label><input type="radio" name="q10" value="1"> Respeitar regras, colegas, superiores e cidadãos</label></div><div class="actions"><button type="button" class="btn secondary" onclick="voltar()">Voltar</button><button type="button" onclick="proxima()">Próximas perguntas</button></div></div><div class="step-panel" data-step="2"><h3>Prova objetiva — 11 a 20</h3><div class="question"><h3>11. Qual deve ser a postura diante de uma ordem legal de um superior?</h3><label><input type="radio" name="q11" value="1"> Cumprir a ordem com disciplina e responsabilidade</label><label><input type="radio" name="q11" value="0"> Ignorar a ordem sem justificativa</label><label><input type="radio" name="q11" value="0"> Discutir publicamente com o superior</label></div><div class="question"><h3>12. Em uma ocorrência, qual informação é importante registrar?</h3><label><input type="radio" name="q12" value="0"> Apenas o nome do agente</label><label><input type="radio" name="q12" value="0"> Informações inventadas</label><label><input type="radio" name="q12" value="1"> Local, horário, envolvidos e descrição dos fatos</label></div><div class="question"><h3>13. O que o agente deve evitar durante o serviço?</h3><label><input type="radio" name="q13" value="0"> Respeitar a população</label><label><input type="radio" name="q13" value="1"> Abuso de autoridade e ofensas</label><label><input type="radio" name="q13" value="0"> Cumprir regras</label></div><div class="question"><h3>14. Qual atitude é correta ao presenciar uma infração disciplinar?</h3><label><input type="radio" name="q14" value="0"> Participar da infração</label><label><input type="radio" name="q14" value="1"> Informar ao superior responsável</label><label><input type="radio" name="q14" value="0"> Ignorar sempre</label></div><div class="question"><h3>15. O que representa comunicação profissional?</h3><label><input type="radio" name="q15" value="1"> Clareza e respeito</label><label><input type="radio" name="q15" value="0"> Xingamentos</label><label><input type="radio" name="q15" value="0"> Deboche</label></div><div class="question"><h3>16. O agente deve preservar informações internas?</h3><label><input type="radio" name="q16" value="0"> Não</label><label><input type="radio" name="q16" value="1"> Sim, quando forem restritas</label><label><input type="radio" name="q16" value="0"> Apenas às vezes</label></div><div class="question"><h3>17. O trabalho em equipe é importante porque:</h3><label><input type="radio" name="q17" value="0"> Atrapalha o serviço</label><label><input type="radio" name="q17" value="0"> Não faz diferença</label><label><input type="radio" name="q17" value="1"> Melhora a eficiência do serviço</label></div><div class="question"><h3>18. Qual comportamento demonstra ética?</h3><label><input type="radio" name="q18" value="0"> Mentir em relatórios</label><label><input type="radio" name="q18" value="1"> Honestidade e responsabilidade</label><label><input type="radio" name="q18" value="0"> Favorecimentos indevidos</label></div><div class="question"><h3>19. Em patrulhamento, o agente deve:</h3><label><input type="radio" name="q19" value="1"> Manter atenção constante</label><label><input type="radio" name="q19" value="0"> Distração total</label><label><input type="radio" name="q19" value="0"> Ignorar ocorrências</label></div><div class="question"><h3>20. Qual valor é essencial para a GCM?</h3><label><input type="radio" name="q20" value="0"> Desorganização</label><label><input type="radio" name="q20" value="1"> Disciplina e respeito</label><label><input type="radio" name="q20" value="0"> Indisciplina</label></div><div class="actions"><button type="button" class="btn secondary" onclick="voltar()">Voltar</button><button type="button" onclick="proxima()">Ver resultado</button></div></div><div class="step-panel" data-step="3"><h3>Resultado</h3><div id="resultado"></div><div class="actions"><button type="button" class="btn secondary" onclick="voltar()">Voltar</button><button type="submit">Enviar formulário</button></div></div></form></section></main><script>let etapa=0;async function verificarAcessoFormulario(){try{const resposta=await fetch(GCM_API+'/pode-enviar-formulario',{headers:{Authorization:'Bearer '+(localStorage.getItem('gcm_token')||'')}});const dados=await resposta.json();if(!resposta.ok||!dados.pode){document.querySelector('.main').innerHTML=`<section class="section"><div class="card"><h2>Acesso ao Formulário</h2><p>${dados.mensagem||'Você não tem permissão para acessar este formulário.'}</p><br>${dados.motivo==='login_obrigatorio'?'<a class="btn" href="login.html">Fazer login</a>':dados.motivo==='fora_do_servidor'?`<a class="btn" target="_blank" href="${dados.invite}">Entrar no Discord</a>`:'<a class="btn" href="index.html">Voltar ao início</a>'}</div></section>`}}catch(e){}}function atualizar(){document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-step="${etapa}"]`).classList.add('active');document.querySelectorAll('[data-step-i]').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-step-i="${etapa}"]`).classList.add('active');scrollTo({top:0,behavior:'smooth'})}function validar(){if(etapa===0&&(!nome.value.trim()||!discord.value.trim()||!idade.value.trim())){alert('Preencha nome, Discord e idade.');return false}if(etapa===1){for(let i=1;i<=10;i++)if(!document.querySelector(`input[name="q${i}"]:checked`)){alert('Responda a pergunta '+i);return false}}if(etapa===2){for(let i=11;i<=20;i++)if(!document.querySelector(`input[name="q${i}"]:checked`)){alert('Responda a pergunta '+i);return false}}return true}function proxima(){if(!validar())return;if(etapa<3){etapa++;atualizar();if(etapa===3)calcular()}}function voltar(){if(etapa>0){etapa--;atualizar()}}function calcular(){let pontos=0;for(let i=1;i<=20;i++){const r=document.querySelector(`input[name="q${i}"]:checked`);if(r&&r.value==='1')pontos++}const aprovado=pontos>=16;const pct=Math.round(pontos/20*100);resultado.style.display='block';resultado.innerHTML=`<h2>Resultado do Concurso</h2><p><strong>Candidato:</strong> ${nome.value}</p><p><strong>Discord:</strong> ${discord.value}</p><p><strong>Nota:</strong> ${pontos}/20</p><p><strong>Porcentagem:</strong> ${pct}%</p><p class="${aprovado?'aprovado':'reprovado'}">${aprovado?'APROVADO':'REPROVADO'}</p>`}prova.addEventListener('submit',async e=>{e.preventDefault();calcular();let pontos=0;for(let i=1;i<=20;i++){const r=document.querySelector(`input[name="q${i}"]:checked`);if(r&&r.value==='1')pontos++}const aprovado=pontos>=16;try{const res=await fetch(GCM_API+'/formulario',{method:'POST',headers:{Authorization:'Bearer '+(localStorage.getItem('gcm_token')||''),'Content-Type':'application/json'},body:JSON.stringify({nome:nome.value.trim(),discord:discord.value.trim(),idade:idade.value.trim(),motivo:motivo.value.trim(),nota:pontos,status:aprovado?'APROVADO':'REPROVADO'})});const dados=await res.json();alert(dados.mensagem||'Formulário enviado.')}catch(err){alert('Resultado calculado, mas não foi possível enviar para o Discord.')}});document.addEventListener('DOMContentLoaded',()=>{verificarAcessoFormulario();atualizar()})</script><footer><div class="footer-inner"><div><h3>GCM Baixada Santista</h3><p>Portal institucional para organização, recrutamento, hierarquia e registros operacionais.</p></div><div><h3>Navegação</h3><p>Início • Geral • Hierarquia • Edital • Recrutamento • Painel</p></div><div><h3>Serviços</h3><p>Boletins, prisões, viaturas e controle por cargo Discord.</p></div></div><div class="footer-bottom">© 2026 Guarda Civil Metropolitana - Baixada Santista</div></footer>
 <script>
-const GCM_API = 'https://backend-gcm-1.onrender.com';
-let etapaAtual = 0;
+const GCM_API='https://backend-gcm-1.onrender.com';
+const DISCORD_INVITE='https://discord.gg/YXnn9ZrBZe';
+function gcmToken(){return localStorage.getItem('gcm_token')}
+function gcmSaveTokenFromUrl(){const p=new URLSearchParams(location.search);const t=p.get('token');if(t){localStorage.setItem('gcm_token',t);p.delete('token');history.replaceState({},document.title,location.pathname+(p.toString()?'?'+p.toString():'')+location.hash)}}
+async function gcmMe(){const t=gcmToken();if(!t)return null;try{const r=await fetch(GCM_API+'/me',{headers:{Authorization:'Bearer '+t}});if(!r.ok){localStorage.removeItem('gcm_token');return null}return await r.json()}catch(e){return null}}
+function gcmAvatarUrl(u){return u&&u.avatar?`https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.png?size=128`:'https://cdn.discordapp.com/embed/avatars/0.png'}
+async function renderUser(){gcmSaveTokenFromUrl();const box=document.getElementById('userBox');if(!box)return;const d=await gcmMe();if(d&&d.logged){const n=d.user.global_name||d.user.username||'Usuário';box.innerHTML=`<img src="${gcmAvatarUrl(d.user)}"><span>${n}</span><a href="painel.html">Painel</a><button onclick="gcmLogout()">Sair</button>`}else{box.innerHTML=`<a href="login.html">Login</a><a href="painel.html">Painel</a>`}}
+function gcmLogout(){localStorage.removeItem('gcm_token');location.href='login.html'}
+async function temCargoAutorizado(){const d=await gcmMe();return !!(d&&d.logged&&d.hasRole)}
+document.addEventListener('DOMContentLoaded',renderUser);
+</script>
 
-function gcmToken(){
-  return localStorage.getItem('gcm_token');
-}
-
-function gcmSaveTokenFromUrl(){
-  const params = new URLSearchParams(window.location.search);
-  const token = params.get('token');
-  if(token){
-    localStorage.setItem('gcm_token', token);
-    params.delete('token');
-    const novaUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '') + window.location.hash;
-    window.history.replaceState({}, document.title, novaUrl);
-  }
-}
-
-async function gcmMe(){
-  const token = gcmToken();
-  if(!token) return null;
-
-  try{
-    const res = await fetch(GCM_API + '/me', {
-      headers: { 'Authorization': 'Bearer ' + token }
-    });
-
-    if(!res.ok){
-      localStorage.removeItem('gcm_token');
-      return null;
-    }
-
-    return await res.json();
-  }catch(e){
-    return null;
-  }
-}
-
-function gcmAvatarUrl(user){
-  if(user && user.avatar){
-    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`;
-  }
-  return 'https://cdn.discordapp.com/embed/avatars/0.png';
-}
-
-async function renderUser(){
-  gcmSaveTokenFromUrl();
-
-  const box = document.getElementById('userBox');
-  if(!box) return;
-
+<script id="controle-edital-recrutamento">
+async function controlarEditalRecrutamento() {
   const data = await gcmMe();
 
-  if(data && data.logged){
-    const nome = data.user.global_name || data.user.username || 'Usuário';
+  const podeVerRecrutamento = !data || !data.logged || !data.hasRole;
 
-    box.innerHTML = `
-      <img src="${gcmAvatarUrl(data.user)}" alt="Avatar">
-      <span>${nome}</span>
-      <a href="painel.html">Painel</a>
-      <button onclick="gcmLogout()">Sair</button>
-    `;
-  }else{
-    box.innerHTML = `
-      <a href="login.html">Login</a>
-      <a href="painel.html">Painel</a>
-    `;
-  }
+  document.querySelectorAll('.edital-recrutamento-link').forEach(link => {
+    link.style.display = podeVerRecrutamento ? '' : 'none';
+  });
 }
 
-function gcmLogout(){
-  localStorage.removeItem('gcm_token');
-  window.location.href = 'login.html';
-}
+document.addEventListener('DOMContentLoaded', controlarEditalRecrutamento);
+</script>
 
-async function gcmMostrarBoletimPorCargo() {
-  const token = localStorage.getItem('gcm_token');
 
-  if (!token) {
-    document.querySelectorAll('.boletim-link').forEach(link => link.style.display = 'none');
+<script id="guard-formulario-cargo">
+async function bloquearFormularioParaQuemTemCargo() {
+  const data = await gcmMe();
+
+  if (data && data.logged && data.hasRole) {
+    document.querySelector('.main').innerHTML = `
+      <section class="section">
+        <div class="card">
+          <h2>Formulário indisponível</h2>
+          <p>Você já possui o cargo autorizado, por isso não pode enviar o recrutamento.</p>
+          <br>
+          <a class="btn" href="painel.html">Ir para o Painel</a>
+          <a class="btn secondary" href="index.html">Voltar ao Início</a>
+        </div>
+      </section>
+    `;
     return;
   }
 
-  try {
-    const resposta = await fetch('https://backend-gcm-1.onrender.com/me', {
-      headers: { Authorization: 'Bearer ' + token }
-    });
-
-    const dados = await resposta.json();
-
-    document.querySelectorAll('.boletim-link').forEach(link => {
-      link.style.display = dados.logged && dados.hasRole ? 'flex' : 'none';
-    });
-  } catch (e) {}
-}
-
-function atualizarEtapa(){
-  document.querySelectorAll('.step-panel').forEach(painel => {
-    painel.classList.remove('active');
-  });
-
-  document.querySelector(`[data-step="${etapaAtual}"]`).classList.add('active');
-
-  document.querySelectorAll('[data-step-indicator]').forEach(item => {
-    item.classList.remove('active');
-  });
-
-  document.querySelector(`[data-step-indicator="${etapaAtual}"]`).classList.add('active');
-
-  const porcentagem = ((etapaAtual + 1) / 4) * 100;
-  document.getElementById('progressFill').style.width = porcentagem + '%';
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function validarEtapaAtual(){
-  if(etapaAtual === 0){
-    const nome = document.getElementById("nome").value.trim();
-    const discord = document.getElementById("discord").value.trim();
-    const idade = document.getElementById("idade").value.trim();
-
-    if(!nome || !discord || !idade){
-      alert("Preencha nome, Discord e idade antes de avançar.");
-      return false;
-    }
-  }
-
-  if(etapaAtual === 1){
-    for(let i = 1; i <= 10; i++){
-      if(!document.querySelector(`input[name="q${i}"]:checked`)){
-        alert(`Responda a pergunta ${i} antes de avançar.`);
-        return false;
-      }
-    }
-  }
-
-  if(etapaAtual === 2){
-    for(let i = 11; i <= 20; i++){
-      if(!document.querySelector(`input[name="q${i}"]:checked`)){
-        alert(`Responda a pergunta ${i} antes de ver o resultado.`);
-        return false;
-      }
-    }
-  }
-
-  return true;
-}
-
-function proximaEtapa(){
-  if(!validarEtapaAtual()) return;
-
-  if(etapaAtual < 3){
-    etapaAtual++;
-    atualizarEtapa();
-
-    if(etapaAtual === 3){
-      calcularResultado();
-    }
-  }
-}
-
-function voltarEtapa(){
-  if(etapaAtual > 0){
-    etapaAtual--;
-    atualizarEtapa();
-  }
-}
-
-function calcularResultado(){
-  const nome = document.getElementById("nome").value.trim();
-  const discord = document.getElementById("discord").value.trim();
-
-  const respostas = {
-    q1: "a", q2: "a", q3: "a", q4: "a", q5: "a",
-    q6: "a", q7: "a", q8: "a", q9: "a", q10: "a",
-    q11: "a", q12: "a", q13: "a", q14: "a", q15: "a",
-    q16: "a", q17: "a", q18: "a", q19: "a", q20: "a"
-  };
-
-  let pontos = 0;
-
-  for (let pergunta in respostas) {
-    const marcada = document.querySelector('input[name="' + pergunta + '"]:checked');
-
-    if (marcada && marcada.value === respostas[pergunta]) {
-      pontos++;
-    }
-  }
-
-  const totalPerguntas = Object.keys(respostas).length;
-  const porcentagem = Math.round((pontos / totalPerguntas) * 100);
-  const aprovado = pontos >= 16;
-
-  const chance = aprovado
-    ? "Alta chance de aprovação no processo seletivo."
-    : pontos >= 10
-      ? "Chance média. Estude mais para aumentar sua nota."
-      : "Chance baixa. Recomendado revisar as regras e tentar novamente.";
-
-  const resultado = document.getElementById("resultado");
-  resultado.style.display = "block";
-  resultado.innerHTML = `
-    <h2>Resultado do Concurso</h2>
-    <p><strong>Candidato:</strong> ${nome}</p>
-    <p><strong>Discord:</strong> ${discord}</p>
-    <p><strong>Nota:</strong> ${pontos}/${totalPerguntas}</p>
-    <p><strong>Porcentagem de acerto:</strong> ${porcentagem}%</p>
-    <p><strong>Chance de aprovação:</strong> ${chance}</p>
-    <p class="${aprovado ? "aprovado" : "reprovado"}">
-      ${aprovado ? "APROVADO — acertou 16 ou mais perguntas." : "REPROVADO — precisa acertar pelo menos 16 de 20 perguntas."}
-    </p>
-  `;
-}
-
-document.getElementById("prova").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  if(etapaAtual !== 3){
-    return;
-  }
-
-  calcularResultado();
-
-  const respostas = {
-    q1: "a", q2: "a", q3: "a", q4: "a", q5: "a",
-    q6: "a", q7: "a", q8: "a", q9: "a", q10: "a",
-    q11: "a", q12: "a", q13: "a", q14: "a", q15: "a",
-    q16: "a", q17: "a", q18: "a", q19: "a", q20: "a"
-  };
-
-  let pontos = 0;
-
-  for (let pergunta in respostas) {
-    const marcada = document.querySelector('input[name="' + pergunta + '"]:checked');
-    if (marcada && marcada.value === respostas[pergunta]) pontos++;
-  }
-
-  const aprovado = pontos >= 16;
-
-  fetch('https://backend-gcm-1.onrender.com/formulario', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + (localStorage.getItem('gcm_token') || ''),
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      nome: document.getElementById("nome").value.trim(),
-      discord: document.getElementById("discord").value.trim(),
-      idade: document.getElementById("idade").value.trim(),
-      motivo: document.getElementById("motivo").value.trim(),
-      nota: pontos,
-      status: aprovado ? "APROVADO" : "REPROVADO"
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert(data.mensagem || "Formulário enviado.");
-  })
-  .catch(error => {
-    console.error("Erro ao enviar para o Discord:", error);
-    alert("Resultado calculado, mas não foi possível enviar para o Discord. Verifique se o backend está ligado.");
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderUser();
-  gcmMostrarBoletimPorCargo();
-  atualizarEtapa();
-});
-</script>
-
-<script>
-async function verificarAcessoFormulario() {
-  try {
-    const resposta = await fetch('https://backend-gcm-1.onrender.com/pode-enviar-formulario', {
-      headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('gcm_token') || '') }
-    });
-
-    const dados = await resposta.json();
-
-    if (!resposta.ok || !dados.pode) {
-      document.body.innerHTML = `
-        <div style="min-height:100vh;display:grid;place-items:center;background:#0b1220;color:white;font-family:Arial;padding:20px;">
-          <div style="max-width:560px;background:#111c2f;border:1px solid #223653;border-radius:14px;padding:28px;text-align:center;">
-            <h1 style="color:#d4af37;margin-bottom:12px;">Acesso ao Formulário</h1>
-            <p style="margin-bottom:18px;">${dados.mensagem || 'Você não tem permissão para acessar este formulário.'}</p>
-            ${
-              dados.motivo === 'login_obrigatorio'
-                ? '<a href="login.html" style="background:#d4af37;color:#111;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">Fazer login</a>'
-                : dados.motivo === 'fora_do_servidor'
-                  ? `<a href="${dados.invite}" target="_blank" style="background:#d4af37;color:#111;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">Entrar no Discord</a>`
-                  : '<a href="index.html" style="background:#d4af37;color:#111;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">Voltar ao início</a>'
-            }
-          </div>
-        </div>
-      `;
-    }
-  } catch (erro) {
-    document.body.innerHTML = `
-      <div style="min-height:100vh;display:grid;place-items:center;background:#0b1220;color:white;font-family:Arial;padding:20px;">
-        <div style="max-width:560px;background:#111c2f;border:1px solid #223653;border-radius:14px;padding:28px;text-align:center;">
-          <h1 style="color:#d4af37;margin-bottom:12px;">Erro</h1>
-          <p>Não foi possível verificar o login. Veja se o backend está online.</p>
-        </div>
-      </div>
+  if (data && data.logged && data.inServer === false) {
+    const aviso = document.createElement('div');
+    aviso.className = 'alert erro';
+    aviso.innerHTML = `
+      <strong>Você não está no servidor da GCM.</strong><br>
+      Entre no Discord oficial para continuar o recrutamento.
+      <br><br>
+      <a class="btn" target="_blank" href="${DISCORD_INVITE}">Entrar no Discord</a>
     `;
+    const main = document.querySelector('.main');
+    if (main) main.prepend(aviso);
   }
 }
 
-verificarAcessoFormulario();
+document.addEventListener('DOMContentLoaded', bloquearFormularioParaQuemTemCargo);
 </script>
 
-</body>
-</html>
+</body></html>
