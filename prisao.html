@@ -175,6 +175,53 @@ button:hover,
     transform:scale(1.05) !important;
 }
 
+
+/* CORREÇÃO DO PAINEL: FUNDO VERMELHO, LETRAS BRANCAS */
+body,
+.main,
+section,
+.card,
+.form-card,
+.panel-option,
+.record,
+.notice,
+.question,
+.stat,
+.member,
+.principle {
+    background-color: #8b1118 !important;
+    color: #ffffff !important;
+}
+
+body {
+    background: #4a0408 !important;
+}
+
+p, span, label, h1, h2, h3, h4, h5, h6, strong, a, li {
+    color: #ffffff !important;
+}
+
+input,
+textarea,
+select {
+    background: #6e0c10 !important;
+    color: #ffffff !important;
+    border: 1px solid #c53030 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #ffdede !important;
+}
+
+a:hover,
+button:hover,
+.nav a:hover,
+.menu a:hover {
+    color: #ffd84a !important;
+    transform: scale(1.04) !important;
+}
+
 </style></head><body><div class="govbar"><span>Portal Institucional GCM — Baixada Santista</span><span>Atendimento • Disciplina • Hierarquia</span></div><header class="header"><div class="header-inner"><div class="brand"><div class="logo">GCM</div><div class="brand-title"><strong>Guarda Civil Metropolitana</strong><span>Baixada Santista</span></div></div><nav class="nav"><a class="" href="index.html">Início</a><a class="" href="geral.html">Geral</a><a class="" href="hierarquia.html">Hierarquia</a><a class="edital-recrutamento-link" href="edital.html">Edital</a><a class="edital-recrutamento-link" href="formulario.html">Recrutamento</a><a class="active" href="painel.html">Painel</a><a class="" href="termos.html">Termos</a><span id="userBox" class="user-box"></span></nav></div></header><main class="main"><section class="section"><h2>Criar Prisão</h2><div id="avisoPrisao"></div><div id="areaPrisao" class="grid hidden"><div class="card form-card"><h3>Registrar nova prisão</h3><div class="form-grid"><div><label>Nome do preso</label><input id="nomePreso"></div><div><label>RG/ID</label><input id="rgPreso"></div><div><label>Crime</label><input id="crime"></div><div><label>Pena</label><input id="pena"></div></div><label>Local</label><input id="localPrisao"><label>Descrição</label><textarea id="descricao"></textarea><label>Imagem/prova URL</label><input id="imagem"><br><br><button onclick="registrar()">Registrar prisão</button></div><div class="card"><h3>Registros</h3><div id="lista"></div></div></div></section></main><script>async function iniciarPrisao(){const ok=await temCargoAutorizado();if(!ok){avisoPrisao.innerHTML='<div class="alert erro">Apenas membros autorizados podem registrar prisões.</div>';return}areaPrisao.classList.remove('hidden');carregar()}async function registrar(){const payload={nomePreso:nomePreso.value,rgPreso:rgPreso.value,crime:crime.value,pena:pena.value,local:localPrisao.value,descricao:descricao.value,imagem:imagem.value};const res=await fetch(GCM_API+'/prisoes',{method:'POST',headers:{Authorization:'Bearer '+(localStorage.getItem('gcm_token')||''),'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await res.json();alert(d.mensagem||(res.ok?'Registrado.':'Erro.'));if(res.ok)carregar()}async function carregar(){try{const res=await fetch(GCM_API+'/prisoes',{headers:{Authorization:'Bearer '+(localStorage.getItem('gcm_token')||'')}});const d=await res.json();const regs=d.registros||[];lista.innerHTML=regs.length?regs.map(r=>`<div class="record" style="margin-bottom:12px"><h3>#${r.id} ${r.nomePreso}</h3><p>${r.crime}</p><p>${r.local}</p></div>`).join(''):'<p>Nenhum registro.</p>'}catch(e){}}document.addEventListener('DOMContentLoaded',iniciarPrisao)</script><footer><div class="footer-inner"><div><h3>GCM Baixada Santista</h3><p>Portal institucional para organização, recrutamento, hierarquia e registros operacionais.</p></div><div><h3>Navegação</h3><p>Início • Geral • Hierarquia • Edital • Recrutamento • Painel</p></div><div><h3>Serviços</h3><p>Boletins, prisões, viaturas e controle por cargo Discord.</p></div></div><div class="footer-bottom">© 2026 Guarda Civil Metropolitana - Baixada Santista</div></footer>
 <script>
 const GCM_API='https://backend-gcm-1.onrender.com';
