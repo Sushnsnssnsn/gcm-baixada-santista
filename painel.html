@@ -426,6 +426,16 @@ function salvarViaturaMelhorada(){
   lista.unshift(registro);
   localStorage.setItem('viaturas_gcm', JSON.stringify(lista));
 
+ 
+ fetch('https://backend-gcm-1.onrender.com/viaturas/assumir', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + (localStorage.getItem('gcm_token') || '')
+    },
+    body: JSON.stringify(registro)
+});
+
   alert('Viatura/barca assumida com sucesso.');
 
   const areaModal = document.getElementById('areaModal') || document.getElementById('modalArea');
