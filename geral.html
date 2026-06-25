@@ -280,4 +280,40 @@ function atualizarViaturasPublicas(){
 document.addEventListener('DOMContentLoaded', atualizarViaturasPublicas);
 </script>
 
+
+<script id="viaturas-publicas-melhoradas">
+function atualizarViaturasPublicas(){
+  const area = document.getElementById('listaViaturas');
+  const total = document.getElementById('totalViaturas');
+  if(!area) return;
+
+  const lista = JSON.parse(localStorage.getItem('viaturas_gcm') || '[]');
+
+  if(total) total.textContent = lista.length;
+
+  area.innerHTML = lista.length ? lista.map(v => `
+    <div class="record">
+      <h3>${v.tipo || 'Equipe'} — ${v.prefixo || 'Sem prefixo'}</h3>
+      <p><strong>Viatura:</strong> ${v.viatura || '-'}</p>
+      <p><strong>Rádio:</strong> ${v.radio || '-'}</p>
+      <p><strong>Modulação:</strong> ${v.modulador || '-'}</p>
+      <p><strong>Encarregado:</strong> ${v.pessoa1 || v.encarregado || '-'}</p>
+      <p><strong>Motorista:</strong> ${v.pessoa2 || v.motorista || '-'}</p>
+      <p><strong>3º integrante:</strong> ${v.pessoa3 || '-'}</p>
+      <p><strong>4º integrante:</strong> ${v.pessoa4 || '-'}</p>
+      <p><strong>Armas:</strong> ${v.armas || '-'}</p>
+      <p><strong>Área:</strong> ${v.area || '-'}</p>
+      <p><strong>Assumida em:</strong> ${v.data || '-'}</p>
+    </div>
+  `).join('') : `
+    <div class="record">
+      <h3>Nenhuma viatura assumida</h3>
+      <p>Nenhuma barca está na rua no momento.</p>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', atualizarViaturasPublicas);
+</script>
+
 </body></html>

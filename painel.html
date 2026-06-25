@@ -280,4 +280,176 @@ async function controlarEditalRecrutamento() {
 document.addEventListener('DOMContentLoaded', controlarEditalRecrutamento);
 </script>
 
+
+<script id="viatura-melhorada">
+function abrirAssumir(){
+  const area = document.getElementById('areaModal') || document.getElementById('modalArea');
+  const titulo = document.getElementById('tituloModal') || document.getElementById('modalTitulo');
+  const conteudo = document.getElementById('conteudoModal') || document.getElementById('formDinamico');
+
+  if(!area || !titulo || !conteudo){
+    alert('Erro: área do painel não encontrada.');
+    return;
+  }
+
+  area.classList.remove('hidden');
+  titulo.textContent = 'Assumir Viatura / Barca';
+
+  conteudo.innerHTML = `
+    <div class="alert">
+      Preencha os dados da viatura. Ronda Cidadã pede área de patrulhamento. ROMU não pede área.
+    </div>
+
+    <label>Tipo de equipe</label>
+    <select id="tipoEquipe" onchange="alternarAreaPatrulhamento()">
+      <option value="Ronda Cidadã">Ronda Cidadã</option>
+      <option value="ROMU">ROMU</option>
+    </select>
+
+    <div class="form-grid">
+      <div>
+        <label>Prefixo</label>
+        <input id="vPrefixo" placeholder="Ex: VTR-01">
+      </div>
+
+      <div>
+        <label>Viatura</label>
+        <input id="vViatura" placeholder="Ex: SW4, Hilux, Spin">
+      </div>
+    </div>
+
+    <label>Armas utilizadas na viatura</label>
+    <textarea id="vArmas" placeholder="Ex: Pistola, carabina, taser, espingarda..."></textarea>
+
+    <h3 style="margin-top:18px;">Integrantes da viatura</h3>
+
+    <div class="form-grid">
+      <div>
+        <label>1º integrante / Encarregado</label>
+        <input id="vPessoa1" placeholder="Nome do encarregado">
+      </div>
+
+      <div>
+        <label>2º integrante / Motorista</label>
+        <input id="vPessoa2" placeholder="Nome do motorista">
+      </div>
+
+      <div>
+        <label>3º integrante</label>
+        <input id="vPessoa3" placeholder="Nome do 3º integrante">
+      </div>
+
+      <div>
+        <label>4º integrante</label>
+        <input id="vPessoa4" placeholder="Nome do 4º integrante">
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div>
+        <label>Rádio</label>
+        <select id="vRadio">
+          <option value="190">190</option>
+          <option value="153">153</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Quem vai fazer a modulação?</label>
+        <input id="vModulador" placeholder="Nome do responsável pela modulação">
+      </div>
+    </div>
+
+    <div id="areaPatrulhamentoBox">
+      <label>Área de patrulhamento</label>
+      <input id="vArea" placeholder="Ex: Centro, bairros, escolas, comércio...">
+    </div>
+
+    <br>
+
+    <button onclick="salvarViaturaMelhorada()">Assumir viatura</button>
+    <button class="btn secondary" onclick="fecharModal()">Cancelar</button>
+  `;
+
+  alternarAreaPatrulhamento();
+  area.scrollIntoView({behavior:'smooth'});
+}
+
+function alternarAreaPatrulhamento(){
+  const tipo = document.getElementById('tipoEquipe')?.value;
+  const box = document.getElementById('areaPatrulhamentoBox');
+  if(!box) return;
+  box.style.display = tipo === 'ROMU' ? 'none' : 'block';
+}
+
+function salvarViaturaMelhorada(){
+  const tipo = document.getElementById('tipoEquipe')?.value || 'Ronda Cidadã';
+  const prefixo = document.getElementById('vPrefixo')?.value.trim() || '';
+  const viatura = document.getElementById('vViatura')?.value.trim() || '';
+  const armas = document.getElementById('vArmas')?.value.trim() || '';
+  const pessoa1 = document.getElementById('vPessoa1')?.value.trim() || '';
+  const pessoa2 = document.getElementById('vPessoa2')?.value.trim() || '';
+  const pessoa3 = document.getElementById('vPessoa3')?.value.trim() || '';
+  const pessoa4 = document.getElementById('vPessoa4')?.value.trim() || '';
+  const radio = document.getElementById('vRadio')?.value || '';
+  const modulador = document.getElementById('vModulador')?.value.trim() || '';
+  const area = tipo === 'ROMU' ? 'Não se aplica' : (document.getElementById('vArea')?.value.trim() || '');
+
+  if(!prefixo || !viatura || !pessoa1 || !pessoa2 || !radio || !modulador){
+    alert('Preencha pelo menos: prefixo, viatura, encarregado, motorista, rádio e modulador.');
+    return;
+  }
+
+  if(tipo !== 'ROMU' && !area){
+    alert('Para Ronda Cidadã, informe a área de patrulhamento.');
+    return;
+  }
+
+  const registro = {
+    tipo,
+    prefixo,
+    viatura,
+    armas,
+    encarregado: pessoa1,
+    motorista: pessoa2,
+    pessoa1,
+    pessoa2,
+    pessoa3,
+    pessoa4,
+    radio,
+    modulador,
+    area,
+    data: new Date().toLocaleString('pt-BR')
+  };
+
+  const lista = JSON.parse(localStorage.getItem('viaturas_gcm') || '[]');
+  lista.unshift(registro);
+  localStorage.setItem('viaturas_gcm', JSON.stringify(lista));
+
+  alert('Viatura/barca assumida com sucesso.');
+
+  const areaModal = document.getElementById('areaModal') || document.getElementById('modalArea');
+  if(areaModal) areaModal.classList.add('hidden');
+}
+
+function retirarViatura(){
+  const lista = JSON.parse(localStorage.getItem('viaturas_gcm') || '[]');
+
+  if(!lista.length){
+    alert('Não existe nenhuma viatura/barca assumida para retirar.');
+    return;
+  }
+
+  const atual = lista[0];
+  const confirmar = confirm(`Deseja retirar da rua a viatura ${atual.prefixo || 'sem prefixo'}?`);
+
+  if(!confirmar) return;
+
+  lista.shift();
+  localStorage.setItem('viaturas_gcm', JSON.stringify(lista));
+
+  alert('Viatura/barca retirada da rua com sucesso.');
+}
+</script>
+
 </body></html>
