@@ -222,6 +222,61 @@ button:hover,
     transform: scale(1.04) !important;
 }
 
+
+/* MENU 3 LINHAS + ACESSO PÚBLICO */
+.mobile-menu-btn{
+  width:46px;
+  height:42px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.20);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  margin-left:auto;
+}
+.mobile-menu-btn span{
+  width:25px;
+  height:3px;
+  background:#fff;
+  border-radius:999px;
+  display:block;
+}
+.nav{
+  display:none !important;
+  position:absolute;
+  right:22px;
+  top:86px;
+  background:#5f0710;
+  border:1px solid #d6a84f;
+  border-radius:18px;
+  padding:14px;
+  min-width:230px;
+  box-shadow:0 20px 45px rgba(0,0,0,.35);
+  z-index:999;
+}
+.nav.menu-open{
+  display:flex !important;
+  flex-direction:column;
+  align-items:stretch;
+}
+.nav a,.nav .user-box{
+  width:100%;
+}
+.header-inner{
+  position:relative;
+}
+@media(max-width:900px){
+  .nav{
+    left:22px;
+    right:22px;
+    top:100%;
+  }
+}
+
 </style></head><body><div class="govbar"><span>Portal Institucional GCM — Baixada Santista</span><span>Atendimento • Disciplina • Hierarquia</span></div><header class="header"><div class="header-inner"><div class="brand"><div class="logo">GCM</div><div class="brand-title"><strong>Guarda Civil Metropolitana</strong><span>Baixada Santista</span></div></div><nav class="nav"><a class="" href="index.html">Início</a><a class="" href="geral.html">Geral</a><a class="" href="hierarquia.html">Hierarquia</a><a class="edital-recrutamento-link" href="edital.html">Edital</a><a class="active edital-recrutamento-link" href="formulario.html">Recrutamento</a><a class="" href="painel.html">Painel</a><a class="" href="termos.html">Termos</a><span id="userBox" class="user-box"></span></nav></div></header><main class="main"><section class="section"><h2>Recrutamento GCM</h2><p class="lead">Formulário em etapas. A cada 10 perguntas, a tela muda.</p><div class="progress"><div class="active" data-step-i="0">Dados</div><div data-step-i="1">Perguntas 1-10</div><div data-step-i="2">Perguntas 11-20</div><div data-step-i="3">Resultado</div></div><form id="prova" class="card form-card"><div class="step-panel active" data-step="0"><h3>Dados do Candidato</h3><div class="form-grid"><div><label>Nome completo</label><input id="nome" required></div><div><label>Discord</label><input id="discord" required></div><div><label>Idade</label><input id="idade" type="number" required></div><div><label>ID na cidade</label><input id="idCidade"></div></div><label>Motivo</label><textarea id="motivo"></textarea><div class="actions"><a class="btn secondary" href="edital.html">Ver edital</a><button type="button" onclick="proxima()">Avançar</button></div></div><div class="step-panel" data-step="1"><h3>Prova objetiva — 1 a 10</h3><div class="question"><h3>1. Qual é a principal função da GCM?</h3><label><input type="radio" name="q1" value="1"> Atuar de forma preventiva na segurança urbana</label><label><input type="radio" name="q1" value="0"> Criar leis municipais</label><label><input type="radio" name="q1" value="0"> Substituir o Poder Judiciário</label></div><div class="question"><h3>2. O que significa hierarquia dentro da corporação?</h3><label><input type="radio" name="q2" value="0"> Todos fazem o que quiserem</label><label><input type="radio" name="q2" value="1"> Organização por cargos, funções e responsabilidades</label><label><input type="radio" name="q2" value="0"> Ausência de comando</label></div><div class="question"><h3>3. Durante uma abordagem, o agente deve agir com:</h3><label><input type="radio" name="q3" value="0"> Agressividade sem necessidade</label><label><input type="radio" name="q3" value="0"> Deboche e provocação</label><label><input type="radio" name="q3" value="1"> Calma, técnica e respeito</label></div><div class="question"><h3>4. Um relatório de ocorrência deve conter:</h3><label><input type="radio" name="q4" value="0"> Apenas opinião pessoal</label><label><input type="radio" name="q4" value="1"> Dados claros, local, horário, envolvidos e descrição dos fatos</label><label><input type="radio" name="q4" value="0"> Informações inventadas</label></div><div class="question"><h3>5. O respeito à população é importante porque:</h3><label><input type="radio" name="q5" value="1"> Fortalece a confiança entre guarda e cidadão</label><label><input type="radio" name="q5" value="0"> Diminui a responsabilidade do agente</label><label><input type="radio" name="q5" value="0"> Permite abuso de autoridade</label></div><div class="question"><h3>6. O uso adequado dos canais da GCM significa:</h3><label><input type="radio" name="q6" value="0"> Fazer spam em todos os canais</label><label><input type="radio" name="q6" value="1"> Usar cada canal para sua finalidade correta</label><label><input type="radio" name="q6" value="0"> Mandar mensagens fora do tema sempre que quiser</label></div><div class="question"><h3>7. Em caso de dúvida durante o serviço, o agente deve:</h3><label><input type="radio" name="q7" value="0"> Ignorar a situação</label><label><input type="radio" name="q7" value="0"> Criar uma regra própria</label><label><input type="radio" name="q7" value="1"> Procurar orientação de um superior</label></div><div class="question"><h3>8. Disciplina dentro da GCM significa:</h3><label><input type="radio" name="q8" value="1"> Cumprir regras, ordens legais e procedimentos</label><label><input type="radio" name="q8" value="0"> Desrespeitar superiores</label><label><input type="radio" name="q8" value="0"> Agir sem responsabilidade</label></div><div class="question"><h3>9. Se um membro descumprir as regras, ele pode receber:</h3><label><input type="radio" name="q9" value="0"> Promoção automática</label><label><input type="radio" name="q9" value="1"> Medida disciplinar conforme a gravidade</label><label><input type="radio" name="q9" value="0"> Isenção de todas as regras</label></div><div class="question"><h3>10. Qual atitude representa profissionalismo?</h3><label><input type="radio" name="q10" value="0"> Ofender candidatos e membros</label><label><input type="radio" name="q10" value="0"> Divulgar informações internas sem autorização</label><label><input type="radio" name="q10" value="1"> Respeitar regras, colegas, superiores e cidadãos</label></div><div class="actions"><button type="button" class="btn secondary" onclick="voltar()">Voltar</button><button type="button" onclick="proxima()">Próximas perguntas</button></div></div><div class="step-panel" data-step="2"><h3>Prova objetiva — 11 a 20</h3><div class="question"><h3>11. Qual deve ser a postura diante de uma ordem legal de um superior?</h3><label><input type="radio" name="q11" value="1"> Cumprir a ordem com disciplina e responsabilidade</label><label><input type="radio" name="q11" value="0"> Ignorar a ordem sem justificativa</label><label><input type="radio" name="q11" value="0"> Discutir publicamente com o superior</label></div><div class="question"><h3>12. Em uma ocorrência, qual informação é importante registrar?</h3><label><input type="radio" name="q12" value="0"> Apenas o nome do agente</label><label><input type="radio" name="q12" value="0"> Informações inventadas</label><label><input type="radio" name="q12" value="1"> Local, horário, envolvidos e descrição dos fatos</label></div><div class="question"><h3>13. O que o agente deve evitar durante o serviço?</h3><label><input type="radio" name="q13" value="0"> Respeitar a população</label><label><input type="radio" name="q13" value="1"> Abuso de autoridade e ofensas</label><label><input type="radio" name="q13" value="0"> Cumprir regras</label></div><div class="question"><h3>14. Qual atitude é correta ao presenciar uma infração disciplinar?</h3><label><input type="radio" name="q14" value="0"> Participar da infração</label><label><input type="radio" name="q14" value="1"> Informar ao superior responsável</label><label><input type="radio" name="q14" value="0"> Ignorar sempre</label></div><div class="question"><h3>15. O que representa comunicação profissional?</h3><label><input type="radio" name="q15" value="1"> Clareza e respeito</label><label><input type="radio" name="q15" value="0"> Xingamentos</label><label><input type="radio" name="q15" value="0"> Deboche</label></div><div class="question"><h3>16. O agente deve preservar informações internas?</h3><label><input type="radio" name="q16" value="0"> Não</label><label><input type="radio" name="q16" value="1"> Sim, quando forem restritas</label><label><input type="radio" name="q16" value="0"> Apenas às vezes</label></div><div class="question"><h3>17. O trabalho em equipe é importante porque:</h3><label><input type="radio" name="q17" value="0"> Atrapalha o serviço</label><label><input type="radio" name="q17" value="0"> Não faz diferença</label><label><input type="radio" name="q17" value="1"> Melhora a eficiência do serviço</label></div><div class="question"><h3>18. Qual comportamento demonstra ética?</h3><label><input type="radio" name="q18" value="0"> Mentir em relatórios</label><label><input type="radio" name="q18" value="1"> Honestidade e responsabilidade</label><label><input type="radio" name="q18" value="0"> Favorecimentos indevidos</label></div><div class="question"><h3>19. Em patrulhamento, o agente deve:</h3><label><input type="radio" name="q19" value="1"> Manter atenção constante</label><label><input type="radio" name="q19" value="0"> Distração total</label><label><input type="radio" name="q19" value="0"> Ignorar ocorrências</label></div><div class="question"><h3>20. Qual valor é essencial para a GCM?</h3><label><input type="radio" name="q20" value="0"> Desorganização</label><label><input type="radio" name="q20" value="1"> Disciplina e respeito</label><label><input type="radio" name="q20" value="0"> Indisciplina</label></div><div class="actions"><button type="button" class="btn secondary" onclick="voltar()">Voltar</button><button type="button" onclick="proxima()">Ver resultado</button></div></div><div class="step-panel" data-step="3"><h3>Resultado</h3><div id="resultado"></div><div class="actions"><button type="button" class="btn secondary" onclick="voltar()">Voltar</button><button type="submit">Enviar formulário</button></div></div></form></section></main><script>let etapa=0;async function verificarAcessoFormulario(){try{const resposta=await fetch(GCM_API+'/pode-enviar-formulario',{headers:{Authorization:'Bearer '+(localStorage.getItem('gcm_token')||'')}});const dados=await resposta.json();if(!resposta.ok||!dados.pode){document.querySelector('.main').innerHTML=`<section class="section"><div class="card"><h2>Acesso ao Formulário</h2><p>${dados.mensagem||'Você não tem permissão para acessar este formulário.'}</p><br>${dados.motivo==='login_obrigatorio'?'<a class="btn" href="login.html">Fazer login</a>':dados.motivo==='fora_do_servidor'?`<a class="btn" target="_blank" href="${dados.invite}">Entrar no Discord</a>`:'<a class="btn" href="index.html">Voltar ao início</a>'}</div></section>`}}catch(e){}}function atualizar(){document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-step="${etapa}"]`).classList.add('active');document.querySelectorAll('[data-step-i]').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-step-i="${etapa}"]`).classList.add('active');scrollTo({top:0,behavior:'smooth'})}function validar(){if(etapa===0&&(!nome.value.trim()||!discord.value.trim()||!idade.value.trim())){alert('Preencha nome, Discord e idade.');return false}if(etapa===1){for(let i=1;i<=10;i++)if(!document.querySelector(`input[name="q${i}"]:checked`)){alert('Responda a pergunta '+i);return false}}if(etapa===2){for(let i=11;i<=20;i++)if(!document.querySelector(`input[name="q${i}"]:checked`)){alert('Responda a pergunta '+i);return false}}return true}function proxima(){if(!validar())return;if(etapa<3){etapa++;atualizar();if(etapa===3)calcular()}}function voltar(){if(etapa>0){etapa--;atualizar()}}function calcular(){let pontos=0;for(let i=1;i<=20;i++){const r=document.querySelector(`input[name="q${i}"]:checked`);if(r&&r.value==='1')pontos++}const aprovado=pontos>=16;const pct=Math.round(pontos/20*100);resultado.style.display='block';resultado.innerHTML=`<h2>Resultado do Concurso</h2><p><strong>Candidato:</strong> ${nome.value}</p><p><strong>Discord:</strong> ${discord.value}</p><p><strong>Nota:</strong> ${pontos}/20</p><p><strong>Porcentagem:</strong> ${pct}%</p><p class="${aprovado?'aprovado':'reprovado'}">${aprovado?'APROVADO':'REPROVADO'}</p>`}prova.addEventListener('submit',async e=>{e.preventDefault();calcular();let pontos=0;for(let i=1;i<=20;i++){const r=document.querySelector(`input[name="q${i}"]:checked`);if(r&&r.value==='1')pontos++}const aprovado=pontos>=16;try{const res=await fetch(GCM_API+'/formulario',{method:'POST',headers:{Authorization:'Bearer '+(localStorage.getItem('gcm_token')||''),'Content-Type':'application/json'},body:JSON.stringify({nome:nome.value.trim(),discord:discord.value.trim(),idade:idade.value.trim(),motivo:motivo.value.trim(),nota:pontos,status:aprovado?'APROVADO':'REPROVADO'})});const dados=await res.json();alert(dados.mensagem||'Formulário enviado.')}catch(err){alert('Resultado calculado, mas não foi possível enviar para o Discord.')}});document.addEventListener('DOMContentLoaded',()=>{verificarAcessoFormulario();atualizar()})</script><footer><div class="footer-inner"><div><h3>GCM Baixada Santista</h3><p>Portal institucional para organização, recrutamento, hierarquia e registros operacionais.</p></div><div><h3>Navegação</h3><p>Início • Geral • Hierarquia • Edital • Recrutamento • Painel</p></div><div><h3>Serviços</h3><p>Boletins, prisões, viaturas e controle por cargo Discord.</p></div></div><div class="footer-bottom">© 2026 Guarda Civil Metropolitana - Baixada Santista</div></footer>
 <script>
 const GCM_API='https://backend-gcm-1.onrender.com';
@@ -285,6 +340,53 @@ async function bloquearFormularioParaQuemTemCargo() {
 }
 
 document.addEventListener('DOMContentLoaded', bloquearFormularioParaQuemTemCargo);
+</script>
+
+
+<script id="menu-3-linhas-acesso">
+function abrirMenuGCM(){
+  const nav = document.querySelector('.nav');
+  if(nav) nav.classList.toggle('menu-open');
+}
+
+async function controlarAcessoPublico(){
+  const data = await gcmMe();
+
+  document.querySelectorAll('a[href="formulario.html"], a[href="edital.html"]').forEach(link => {
+    if(!data || !data.logged || data.hasRole){
+      link.style.display = 'none';
+    } else {
+      link.style.display = '';
+    }
+  });
+
+  document.querySelectorAll('a[href="painel.html"]').forEach(link => {
+    link.style.display = (data && data.logged && data.hasRole) ? '' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', controlarAcessoPublico);
+</script>
+
+
+<script id="bloqueio-formulario-sem-login">
+async function bloquearFormularioSemLogin(){
+  const data = await gcmMe();
+  if(!data || !data.logged){
+    const main = document.querySelector('.main') || document.querySelector('main');
+    if(main){
+      main.innerHTML = `<section class="section"><div class="card"><h2>Acesso restrito</h2><p>Você precisa fazer login com Discord para acessar o formulário de recrutamento.</p><br><a class="btn" href="login.html">Fazer login</a><a class="btn secondary" href="index.html">Voltar ao início</a></div></section>`;
+    }
+    return;
+  }
+  if(data.hasRole){
+    const main = document.querySelector('.main') || document.querySelector('main');
+    if(main){
+      main.innerHTML = `<section class="section"><div class="card"><h2>Formulário indisponível</h2><p>Você já possui cargo na GCM, por isso não pode acessar o formulário.</p><br><a class="btn" href="painel.html">Ir para o painel</a></div></section>`;
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', bloquearFormularioSemLogin);
 </script>
 
 </body></html>

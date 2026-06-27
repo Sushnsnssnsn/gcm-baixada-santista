@@ -222,6 +222,61 @@ button:hover,
     transform: scale(1.04) !important;
 }
 
+
+/* MENU 3 LINHAS + ACESSO PÚBLICO */
+.mobile-menu-btn{
+  width:46px;
+  height:42px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.20);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  margin-left:auto;
+}
+.mobile-menu-btn span{
+  width:25px;
+  height:3px;
+  background:#fff;
+  border-radius:999px;
+  display:block;
+}
+.nav{
+  display:none !important;
+  position:absolute;
+  right:22px;
+  top:86px;
+  background:#5f0710;
+  border:1px solid #d6a84f;
+  border-radius:18px;
+  padding:14px;
+  min-width:230px;
+  box-shadow:0 20px 45px rgba(0,0,0,.35);
+  z-index:999;
+}
+.nav.menu-open{
+  display:flex !important;
+  flex-direction:column;
+  align-items:stretch;
+}
+.nav a,.nav .user-box{
+  width:100%;
+}
+.header-inner{
+  position:relative;
+}
+@media(max-width:900px){
+  .nav{
+    left:22px;
+    right:22px;
+    top:100%;
+  }
+}
+
 </style></head><body><div class="govbar"><span>Portal Institucional GCM — Baixada Santista</span><span>Atendimento • Disciplina • Hierarquia</span></div><header class="header"><div class="header-inner"><div class="brand"><div class="logo">GCM</div><div class="brand-title"><strong>Guarda Civil Metropolitana</strong><span>Baixada Santista</span></div></div><nav class="nav"><a class="" href="index.html">Início</a><a class="" href="geral.html">Geral</a><a class="" href="hierarquia.html">Hierarquia</a><a class="edital-recrutamento-link" href="edital.html">Edital</a><a class="edital-recrutamento-link" href="formulario.html">Recrutamento</a><a class="active" href="painel.html">Painel</a><a class="" href="termos.html">Termos</a><span id="userBox" class="user-box"></span></nav></div></header><main class="main"><section class="section"><h2>Criar Boletim</h2><p class="lead">Boletim com modelo para viatura/carro ou moto/IAMO.</p><div id="avisoBoletim"></div><div id="areaBoletim" class="grid hidden"><div class="card form-card"><button onclick="tipo='carro';toggleTipo()">🚔 Viatura/Carro</button><button class="btn secondary" onclick="tipo='moto';toggleTipo()">🏍️ Motos/IAMO</button><div class="form-grid"><div><label>Data</label><input type="date" id="data" oninput="gerar()"></div><div><label>Horário</label><input type="time" id="horario" oninput="gerar()"></div></div><label>Local da ocorrência</label><input id="local" oninput="gerar()"><div id="carroCampos"><label>Viatura prefixo</label><input id="viatura" oninput="gerar()"><label>Encarregado</label><input id="encarregado" oninput="gerar()"><label>Motorista</label><input id="motorista" oninput="gerar()"><label>3° homem</label><input id="h3" oninput="gerar()"><label>4° homem</label><input id="h4" oninput="gerar()"><label>5° homem</label><input id="h5" oninput="gerar()"></div><div id="motoCampos" style="display:none"><label>Moto 1°</label><input id="m1" oninput="gerar()"><label>Moto 2°</label><input id="m2" oninput="gerar()"><label>Moto 3°</label><input id="m3" oninput="gerar()"></div><h3>Dados do indivíduo</h3><label>Nome completo</label><input id="indNome" oninput="gerar()"><label>RG</label><input id="indRg" oninput="gerar()"><label>Relato</label><textarea id="relato" oninput="gerar()"></textarea><h3>Dados do Policial</h3><label>Nome completo</label><input id="polNome" oninput="gerar()"><label>RG</label><input id="polRg" oninput="gerar()"><label>Telefone</label><input id="polTel" oninput="gerar()"></div><div class="card"><h3>Boletim gerado</h3><pre id="saida" style="white-space:pre-wrap;background:#f8f8f8;padding:18px;border-radius:12px;min-height:420px"></pre><button onclick="copiar()">Copiar boletim</button></div></div></section></main><script>let tipo='carro';function v(id){return document.getElementById(id)?.value||''}function dataBR(){let d=v('data');if(!d)return'';let[a,m,di]=d.split('-');return `${di}/${m}/${a}`}async function iniciar(){const ok=await temCargoAutorizado();if(!ok){avisoBoletim.innerHTML='<div class="alert erro">Apenas membros com cargo autorizado podem criar boletins.</div>';return}areaBoletim.classList.remove('hidden');gerar()}function toggleTipo(){carroCampos.style.display=tipo==='carro'?'block':'none';motoCampos.style.display=tipo==='moto'?'block':'none';gerar()}function gerar(){const unidade=tipo==='carro'?`Unidade Responsável\nViatura  prefixo: ${v('viatura')}\nNome do Encarregado: ${v('encarregado')}\nMotorista: ${v('motorista')}\n3° homem : ${v('h3')}\n4° homem : ${v('h4')}\n5°homem: ${v('h5')}`:`Unidade Responsável\nIAMO\n\nMoto 1°: ${v('m1')}\nMoto 2°: ${v('m2')}\nMoto 3°: ${v('m3')}`;saida.textContent=`Boletim ocorrência Guarda Municipal\n\nData: ${dataBR()}\nlocal da ocorrência: ${v('local')}\nHorário da ocorrência: ${v('horario')}\n\n${unidade}\n\nDados do indivíduo \nNome completo: ${v('indNome')}\nRG: ${v('indRg')}\n\nRelato da ocorrência.\n\n${v('relato')}\n\n\nDados do Policial\nNome completo : ${v('polNome')}\nRG: ${v('polRg')}\nTelefone: ${v('polTel')}`}async function copiar(){await navigator.clipboard.writeText(saida.textContent);alert('Boletim copiado.')}document.addEventListener('DOMContentLoaded',iniciar)</script><footer><div class="footer-inner"><div><h3>GCM Baixada Santista</h3><p>Portal institucional para organização, recrutamento, hierarquia e registros operacionais.</p></div><div><h3>Navegação</h3><p>Início • Geral • Hierarquia • Edital • Recrutamento • Painel</p></div><div><h3>Serviços</h3><p>Boletins, prisões, viaturas e controle por cargo Discord.</p></div></div><div class="footer-bottom">© 2026 Guarda Civil Metropolitana - Baixada Santista</div></footer>
 <script>
 const GCM_API='https://backend-gcm-1.onrender.com';
@@ -248,6 +303,32 @@ async function controlarEditalRecrutamento() {
 }
 
 document.addEventListener('DOMContentLoaded', controlarEditalRecrutamento);
+</script>
+
+
+<script id="menu-3-linhas-acesso">
+function abrirMenuGCM(){
+  const nav = document.querySelector('.nav');
+  if(nav) nav.classList.toggle('menu-open');
+}
+
+async function controlarAcessoPublico(){
+  const data = await gcmMe();
+
+  document.querySelectorAll('a[href="formulario.html"], a[href="edital.html"]').forEach(link => {
+    if(!data || !data.logged || data.hasRole){
+      link.style.display = 'none';
+    } else {
+      link.style.display = '';
+    }
+  });
+
+  document.querySelectorAll('a[href="painel.html"]').forEach(link => {
+    link.style.display = (data && data.logged && data.hasRole) ? '' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', controlarAcessoPublico);
 </script>
 
 </body></html>

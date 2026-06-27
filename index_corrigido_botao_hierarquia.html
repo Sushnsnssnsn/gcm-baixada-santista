@@ -86,6 +86,61 @@ button:hover,
     transform:scale(1.05) !important;
     text-shadow:0 0 12px rgba(255,216,74,.45) !important;
 }
+
+/* MENU 3 LINHAS + ACESSO PÚBLICO */
+.mobile-menu-btn{
+  width:46px;
+  height:42px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.20);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  margin-left:auto;
+}
+.mobile-menu-btn span{
+  width:25px;
+  height:3px;
+  background:#fff;
+  border-radius:999px;
+  display:block;
+}
+.nav{
+  display:none !important;
+  position:absolute;
+  right:22px;
+  top:86px;
+  background:#5f0710;
+  border:1px solid #d6a84f;
+  border-radius:18px;
+  padding:14px;
+  min-width:230px;
+  box-shadow:0 20px 45px rgba(0,0,0,.35);
+  z-index:999;
+}
+.nav.menu-open{
+  display:flex !important;
+  flex-direction:column;
+  align-items:stretch;
+}
+.nav a,.nav .user-box{
+  width:100%;
+}
+.header-inner{
+  position:relative;
+}
+@media(max-width:900px){
+  .nav{
+    left:22px;
+    right:22px;
+    top:100%;
+  }
+}
+
 </style></head><body><div class="govbar"><span>Portal Institucional GCM — Baixada Santista</span><span>Atendimento • Disciplina • Hierarquia</span></div><header class="header"><div class="header-inner"><div class="brand"><div class="logo">GCM</div><div class="brand-title"><strong>Guarda Civil Metropolitana</strong><span>Baixada Santista</span></div></div><nav class="nav"><a class="active" href="index.html">Início</a><a class="" href="geral.html">Geral</a><a class="" href="hierarquia.html">Hierarquia</a><a class="edital-recrutamento-link" href="edital.html">Edital</a><a class="edital-recrutamento-link" href="formulario.html">Recrutamento</a><a class="" href="painel.html">Painel</a><a class="" href="termos.html">Termos</a><span id="userBox" class="user-box"></span></nav></div></header><section class="hero"><div class="hero-inner"><div><div class="kicker">Portal Institucional</div><h1>Guarda Civil Metropolitana</h1><p>Portal profissional para acesso rápido às áreas gerais, hierarquia, edital de recrutamento e painel operacional restrito a membros autorizados.</p><div class="hero-actions"><a class="btn" href="geral.html">Acessar Geral</a><a class="btn secondary" href="hierarquia.html">Ver Hierarquia</a></div></div><div class="hero-card"><h3>Serviços ao membro</h3><p>Boletins, prisões, viaturas assumidas e recursos administrativos integrados ao login Discord.</p></div></div></section><main class="main"><section class="section"><h2>Acesso rápido</h2><p class="lead">Dois botões principais para navegação objetiva.</p><div class="grid"><a class="service-card" href="geral.html"><div class="service-icon">📌</div><div class="service-body"><h3>GERAL</h3><p>Veja prisões, boletins e quem está com a barca/viatura assumida.</p></div></a><a class="service-card" href="hierarquia.html"><div class="service-icon">👥</div><div class="service-body"><h3>Hierarquia</h3><p>Consulte a estrutura CMTG e ROMU da corporação.</p></div></a></div></section><section class="section"><h2>Princípios da GCM</h2><p class="lead">Base institucional da atuação operacional e administrativa.</p><div class="principles"><div class="principle"><strong>Disciplina</strong><span>Cumprir normas, procedimentos e orientações superiores.</span></div><div class="principle"><strong>Hierarquia</strong><span>Respeitar cargos, funções e responsabilidades.</span></div><div class="principle"><strong>Respeito</strong><span>Tratar população e membros com postura adequada.</span></div><div class="principle"><strong>Transparência</strong><span>Registrar ações com clareza e veracidade.</span></div><div class="principle"><strong>Eficiência</strong><span>Atuar de forma objetiva, preventiva e organizada.</span></div><div class="principle"><strong>Compromisso</strong><span>Representar a instituição com profissionalismo.</span></div></div></section></main><footer><div class="footer-inner"><div><h3>GCM Baixada Santista</h3><p>Portal institucional para organização, recrutamento, hierarquia e registros operacionais.</p></div><div><h3>Navegação</h3><p>Início • Geral • Hierarquia • Edital • Recrutamento • Painel</p></div><div><h3>Serviços</h3><p>Boletins, prisões, viaturas e controle por cargo Discord.</p></div></div><div class="footer-bottom">© 2026 Guarda Civil Metropolitana - Baixada Santista</div></footer>
 <script>
 const GCM_API='https://backend-gcm-1.onrender.com';
@@ -112,6 +167,32 @@ async function controlarEditalRecrutamento() {
 }
 
 document.addEventListener('DOMContentLoaded', controlarEditalRecrutamento);
+</script>
+
+
+<script id="menu-3-linhas-acesso">
+function abrirMenuGCM(){
+  const nav = document.querySelector('.nav');
+  if(nav) nav.classList.toggle('menu-open');
+}
+
+async function controlarAcessoPublico(){
+  const data = await gcmMe();
+
+  document.querySelectorAll('a[href="formulario.html"], a[href="edital.html"]').forEach(link => {
+    if(!data || !data.logged || data.hasRole){
+      link.style.display = 'none';
+    } else {
+      link.style.display = '';
+    }
+  });
+
+  document.querySelectorAll('a[href="painel.html"]').forEach(link => {
+    link.style.display = (data && data.logged && data.hasRole) ? '' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', controlarAcessoPublico);
 </script>
 
 </body></html>
